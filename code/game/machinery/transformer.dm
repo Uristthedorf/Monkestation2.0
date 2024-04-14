@@ -61,7 +61,10 @@
 		var/mob/living/carbon/human/victim = entering_thing
 		if((transform_standing || victim.body_position == LYING_DOWN) && move_dir == EAST)
 			entering_thing.forceMove(drop_location())
-			do_transform(entering_thing)
+			if(entering_thing.mob_biotypes & MOB_ROBOTIC)
+				do_convert(entering_thing)
+			else
+				do_transform(entering_thing)
 
 /obj/machinery/transformer/CanAllowThrough(atom/movable/mover, border_dir)
 	. = ..()
@@ -75,6 +78,33 @@
 	if(cooldown && (cooldown_timer <= world.time))
 		cooldown = FALSE
 		update_appearance()
+
+/obj/machinery/transformer/proc/do_convert(mob/living/carbon/human/victim)
+	if(machine_stat & (BROKEN|NOPOWER))
+		return
+
+	if(cooldown)
+		return
+
+	if(!transform_dead && victim.stat == DEAD)
+		playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, FALSE)
+		return
+
+	// Activate the cooldown
+	cooldown = TRUE
+	cooldown_timer = world.time + (cooldown_duration / 2) // Easier to install new code than to make a new borg.
+	update_appearance()
+
+	playsound(src.loc, 'sound/machines/high_tech_confirm.ogg', 50, TRUE)
+	
+	var/brutedamage = victim.getBruteLoss() //Stealing conversion healing from bloodcult.
+	var/burndamage = victim.getFireLoss()
+	if(brutedamage || burndamage)
+		victim.adjustBruteLoss(-(brutedamage * 0.75))
+		victim.adjustFireLoss(-(burndamage * 0.75))
+
+	// Reboot
+	sleep(2.5 SECONDS)
 
 /obj/machinery/transformer/proc/do_transform(mob/living/carbon/human/victim)
 	if(machine_stat & (BROKEN|NOPOWER))
