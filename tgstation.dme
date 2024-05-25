@@ -6027,6 +6027,8 @@
 #include "monkestation\code\modules\antagonists\wizard\equipment\spellbook_entries\offensive.dm"
 #include "monkestation\code\modules\antagonists\wizard\equipment\spellbook_entries\summons.dm"
 #include "monkestation\code\modules\antagonists\wizard\grand_ritual\grand_rune.dm"
+#include "monkestation\code\modules\antagonist\evil_clone\evil_clone.dm"
+#include "monkestation\code\modules\antagonist\evil_clone\evil_clone_objective.dm"
 #include "monkestation\code\modules\antimatter\code\containment_jar.dm"
 #include "monkestation\code\modules\antimatter\code\control.dm"
 #include "monkestation\code\modules\antimatter\code\shielding.dm"
