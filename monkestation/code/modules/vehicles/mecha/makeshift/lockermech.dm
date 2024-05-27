@@ -17,7 +17,7 @@
 		MECHA_POWER = 1,
 		MECHA_ARMOR = 0,
 	)
-	mech_type = EXOSUIT_MODULE_RIPLEY | EXOSUIT_MODULE_MAKESHIFT
+	mech_type = EXOSUIT_MODULE_RIPLEY
 	step_energy_drain = 6
     var/list/cargo
 	var/cargo_capacity = 5
