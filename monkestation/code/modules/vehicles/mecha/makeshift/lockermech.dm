@@ -1,8 +1,8 @@
 /obj/vehicle/sealed/mecha/locker
 	desc = "esc = "A locker with stolen wires, struts, electronics and airlock servos crudely assembled into something that resembles the functions of a mech."
 	name = "\improper Locker Mech"
-	icon_state = "odysseus"
-	base_icon_state = "odysseus"
+	icon_state = "lockermech"
+	base_icon_state = "lockermech-open"
 	allow_diagonal_movement = False
 	movedelay = 2
 	encumbrance_gap = 1
@@ -26,6 +26,8 @@
     desc = "esc = "A locker with stolen wires, struts, electronics and airlock servos crudely assembled into something that resembles the functions of a mech."
 	name = "\improper Secured Locker Mech"
     movedelay = 4
+	enter_delay = 30
+	exit_delay = 30
     max_temperature = 25000
     max_integrity = 250
     damage_deflection = 20
