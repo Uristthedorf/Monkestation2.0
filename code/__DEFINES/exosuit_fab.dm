@@ -31,7 +31,7 @@
 #define EXOSUIT_MODULE_RETICENCE (1<<9)
 /// Module is compatible with Marauder models
 #define EXOSUIT_MODULE_MARAUDER (1<<10)
-/// Module is compatible with Locker models
+/// Module is compatible with Locker models //Monke
 #define EXOSUIT_MODULE_LOCKER (1<<11)
 
 /// Module is compatible with "Working" Exosuit models - Ripley and Clarke
