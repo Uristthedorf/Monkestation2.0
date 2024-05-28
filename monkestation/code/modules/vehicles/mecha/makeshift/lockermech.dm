@@ -3,7 +3,7 @@
 	name = "\improper Locker Mech"
 	icon_state = "lockermech"
 	base_icon_state = "lockermech-open"
-	allow_diagonal_movement = False
+	allow_diagonal_movement = FALSE
 	movedelay = 2
 	encumbrance_gap = 1
 	wreckage = null
