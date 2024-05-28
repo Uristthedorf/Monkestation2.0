@@ -1,8 +1,9 @@
 /obj/vehicle/sealed/mecha/locker
 	desc = "A locker with stolen wires, struts, electronics and airlock servos crudely assembled into something that resembles the functions of a mech."
 	name = "\improper Locker Mech"
+	icon = 'monkestation/icons/mech/lockermech.dmi'
 	icon_state = "lockermech"
-	base_icon_state = "lockermech-open"
+	base_icon_state = "lockermech"
 	allow_diagonal_movement = FALSE
 	movedelay = 2
 	encumbrance_gap = 1
