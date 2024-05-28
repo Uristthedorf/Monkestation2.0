@@ -7221,6 +7221,8 @@
 #include "monkestation\code\modules\virology\disease\symtoms\restricted\stage3.dm"
 #include "monkestation\code\modules\virology\disease\symtoms\restricted\stage4.dm"
 #include "monkestation\code\modules\virology\effects\cleanables.dm"
+#include "monkestation\code\modules\vehicles\mecha\makeshift\equipment.dm"
+#include "monkestation\code\modules\vehicles\mecha\makeshift\lockermech.dm"
 #include "monkestation\code\modules\virology\effects\pathogen_cloud.dm"
 #include "monkestation\code\modules\virology\immune_systems\_immune_system.dm"
 #include "monkestation\code\modules\virology\items\_base_item_additions.dm"
