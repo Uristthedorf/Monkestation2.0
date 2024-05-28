@@ -18,7 +18,14 @@
 		MECHA_POWER = 1,
 		MECHA_ARMOR = 0,
 	)
-	mech_type = EXOSUIT_MODULE_RIPLEY
+	equip_by_category = list(
+		MECHA_L_ARM = null,
+		MECHA_R_ARM = null,
+		MECHA_UTILITY = list(/obj/item/mecha_parts/mecha_equipment/ejector),
+		MECHA_POWER = list(),
+		MECHA_ARMOR = list(),
+	)
+	mech_type = EXOSUIT_MODULE_LOCKER
 	step_energy_drain = 6
 	var/list/cargo
 	var/cargo_capacity = 5
@@ -32,4 +39,5 @@
 	max_temperature = 25000
 	max_integrity = 250
 	damage_deflection = 20
+	step_energy_drain = 8
 	armor_type = /datum/armor/closet_secure_closet //Uses same armor a secure closet uses.

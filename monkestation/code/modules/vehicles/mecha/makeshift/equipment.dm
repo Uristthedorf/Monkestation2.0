@@ -6,7 +6,7 @@
 	energy_drain = 30
 	projectile = /obj/projectile/beam/laser/musket
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
-	mech_flags = EXOSUIT_MODULE_WORKING | EXOSUIT_MODULE_COMBAT //Should add an EXOSUIT_MODULE_LOCKER flag.
+	mech_flags = EXOSUIT_MODULE_LOCKER
 
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/musket/prime
 	equip_cooldown = 2 SECONDS
@@ -24,6 +24,7 @@
 	projectile = /obj/projectile/beam/disabler/smoothbore
 	variance = 10
 	fire_sound = 'sound/weapons/taser2.ogg'
+	mech_flags = EXOSUIT_MODULE_LOCKER
 
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/smooth/prime
 	name = "\improper Mech Elite Smoothbore Disabler"
