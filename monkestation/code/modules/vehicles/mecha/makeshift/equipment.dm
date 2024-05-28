@@ -41,9 +41,11 @@
 	equip_cooldown = 40
 	force = 10
 	drill_delay = 15
+    mech_flags = EXOSUIT_MODULE_LOCKER
 
 /obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/makeshift
 	name = "makeshift clamp"
 	desc = "Loose arrangement of cobbled together bits resembling a clamp."
 	equip_cooldown = 25
 	clamp_damage = 10
+    mech_flags = EXOSUIT_MODULE_LOCKER
