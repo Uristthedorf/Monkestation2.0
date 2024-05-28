@@ -82,7 +82,7 @@
 	time = 5 SECONDS
 	category = CAT_ROBOT
 
-/datum/crafting_recipe/lockermusket
+/datum/crafting_recipe/lockerdisabler
 	name = "Makeshift exosuit disabler"
 	result = /obj/item/mecha_parts/mecha_equipment/weapon/energy/smooth
 	reqs = list(/obj/item/gun/energy/disabler/smoothbore = 1,
@@ -91,11 +91,10 @@
 	time = 5 SECONDS
 	category = CAT_ROBOT
 
-/datum/crafting_recipe/lockermusket
+/datum/crafting_recipe/lockerdisablerprime
 	name = "Improved makeshift exosuit disabler"
 	result = /obj/item/mecha_parts/mecha_equipment/weapon/energy/smooth/prime
 	reqs = list(/obj/item/gun/energy/disabler/smoothbore/prime = 1,
 				/obj/item/stack/cable_coil = 5)
-	tool_paths = list(/obj/item/screwdriver, /obj/item/wirecutters = 1)
 	time = 5 SECONDS
 	category = CAT_ROBOT
