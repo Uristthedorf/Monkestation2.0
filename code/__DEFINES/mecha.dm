@@ -54,3 +54,4 @@
 #define MECHA_AMMO_MISSILE_PEP "PEP missile"
 #define MECHA_AMMO_FLASHBANG "Flashbang"
 #define MECHA_AMMO_CLUSTERBANG "Clusterbang"
+#define MECHA_AMMO_IMPROVISED "Improvised shell"

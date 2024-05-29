@@ -34,6 +34,31 @@
 	variance = 0
 	projectiles_per_shot = 2
 	projectile_delay = 4
+	
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/pipegun
+	name = "\improper Mech Pipegun"
+	desc = "A weapon for combat exosuits. Shoots a spread of pellets."
+	icon_state = "mecha_scatter"
+	equip_cooldown = 40
+	projectile = /obj/projectile/bullet/scattershot
+	projectiles = 12
+	projectiles_cache = 12
+	projectiles_cache_max = 36
+	projectiles_per_shot = 10
+	variance = 25
+	harmful = TRUE
+	fire_sound = 'sound/weapons/gun/shotgun/shot.ogg'
+	ammo_type = MECHA_AMMO_IMPROVISED
+	mech_flags = EXOSUIT_MODULE_LOCKER
+
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/pipegun/prime
+	name = "\improper Improved Mech Pipegun"
+	desc = "A weapon for combat exosuits. Shoots a spread of pellets."
+	icon_state = "mecha_scatter"
+	equip_cooldown = 20
+	projectiles = 16
+	projectiles_cache = 16
+	projectiles_cache_max = 48
 
 /obj/item/mecha_parts/mecha_equipment/drill/makeshift
 	name = "Makeshift exosuit drill"
@@ -49,3 +74,11 @@
 	equip_cooldown = 25
 	clamp_damage = 10
     mech_flags = EXOSUIT_MODULE_LOCKER
+
+/obj/item/mecha_ammo/improvised
+	name = "improvised mech ammo box"
+	desc = "A box of improvised shells, for use in exosuit shotguns."
+	icon_state = "scattershot"
+	custom_materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*3)
+	rounds = 12
+	ammo_type = MECHA_AMMO_IMPROVISED
