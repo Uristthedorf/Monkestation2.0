@@ -63,11 +63,11 @@
 	base_icon_state = "rod_sharp"
 	projectile_type = /obj/projectile/bullet/rebar
 
-///obj/item/ammo_casing/rebar/Initialize(mapload)
+///obj/item/ammo_casing/caseless/rebar/Initialize(mapload)
 //	. = ..()
 //	AddElement(/datum/element/caseless, TRUE)
 
-/obj/item/ammo_casing/rebar/update_icon_state()
+/obj/item/ammo_casing/rebar/caseless/update_icon_state()
 	. = ..()
 	icon_state = "[base_icon_state]"
 
