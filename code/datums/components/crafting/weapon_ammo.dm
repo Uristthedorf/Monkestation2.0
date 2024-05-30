@@ -14,7 +14,7 @@
 
 /datum/crafting_recipe/rebarsyndie
 	name = "jagged iron rod"
-	result = /obj/item/ammo_casing/rebar/syndie
+	result = /obj/item/ammo_casing/caseless/rebar/syndie
 	reqs = list(
 		/obj/item/stack/rods = 1,
 	)
