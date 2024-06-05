@@ -13007,6 +13007,14 @@
 /obj/machinery/light/no_nightlight/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos)
+"eTd" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/item/stock_parts/manipulator/femto,
+/obj/item/stock_parts/manipulator/femto,
+/obj/item/stock_parts/scanning_module/triphasic,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central)
 "eTk" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/stone,
@@ -13050,6 +13058,11 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/xenobiology)
+"eUk" = (
+/obj/structure/cable,
+/obj/item/stock_parts/scanning_module/triphasic,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central)
 "eUu" = (
 /obj/structure/transit_tube/crossing/horizontal,
 /obj/structure/lattice,
@@ -14486,6 +14499,12 @@
 /obj/structure/marker_beacon/olive,
 /turf/open/space/basic,
 /area/space/nearstation)
+"fxu" = (
+/obj/structure/cable,
+/obj/structure/frame/computer,
+/obj/item/circuitboard/computer/cloning,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central)
 "fxI" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -14659,6 +14678,7 @@
 "fBz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/item/stock_parts/micro_laser/quadultra,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "fBG" = (
@@ -44452,6 +44472,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
+"pQw" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/item/stock_parts/scanning_module/triphasic,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central)
 "pQx" = (
 /obj/structure/cable,
 /obj/machinery/computer/security/telescreen/interrogation{
@@ -55320,6 +55346,11 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
+"tGe" = (
+/obj/effect/turf_decal/tile/purple,
+/obj/item/storage/belt/utility/full,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central)
 "tGu" = (
 /obj/machinery/computer/operating{
 	dir = 1
@@ -55851,6 +55882,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
+"tPj" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/item/stock_parts/matter_bin/bluespace,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central)
 "tPw" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
@@ -63567,6 +63605,8 @@
 "wBF" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/item/circuitboard/machine/clonepod/experimental,
+/obj/structure/frame/machine,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "wBT" = (
@@ -66928,6 +66968,12 @@
 "xKK" = (
 /turf/closed/wall,
 /area/station/science/research)
+"xKS" = (
+/obj/structure/cable,
+/obj/structure/frame/machine,
+/obj/item/circuitboard/machine/clonescanner,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central)
 "xLu" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -97070,9 +97116,9 @@ cwu
 mYJ
 sDj
 oSo
-wpx
-htd
-tHR
+tPj
+eUk
+pQw
 udN
 ghk
 qyZ
@@ -97328,7 +97374,7 @@ yjd
 yjd
 tvE
 flm
-htd
+xKS
 fBz
 udN
 sxg
@@ -97585,7 +97631,7 @@ pbS
 nwq
 tvE
 ibX
-htd
+fxu
 fMp
 kMl
 xdX
@@ -97844,7 +97890,7 @@ tvE
 psp
 wBF
 tHR
-udN
+tGe
 ghk
 aTi
 fak
@@ -98100,7 +98146,7 @@ qGc
 tvE
 qJU
 hPM
-tHR
+eTd
 udN
 qCj
 cAw

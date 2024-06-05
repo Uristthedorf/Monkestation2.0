@@ -7,6 +7,9 @@
 	req_access = null
 	circuit = /obj/item/circuitboard/machine/clonepod/experimental
 	internal_radio = FALSE
+	var/evil = FALSE
+	var/role_text
+	var/poll_text
 	VAR_PRIVATE
 		static/list/image/cached_clone_images
 
@@ -53,14 +56,21 @@
 	ADD_TRAIT(clonee, TRAIT_NOBREATH, CLONING_POD_TRAIT)
 	ADD_TRAIT(clonee, TRAIT_NOCRITDAMAGE, CLONING_POD_TRAIT)
 	clonee.Unconscious(80)
+	
+	if(evil)
+		role_text = "evil clone"
+		poll_text = "Do you want to play as [clonename]'s evil clone?"
+	else
+		role_text = "defective clone"
+		poll_text = "Do you want to play as [clonename]'s defective clone?"
 
 	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates_for_mob(
-		"Do you want to play as [clonename]'s defective clone?",
+		poll_text,
 		poll_time = 10 SECONDS,
 		target_mob = clonee,
 		ignore_category = POLL_IGNORE_DEFECTIVECLONE,
 		pic_source = get_clone_preview(clonee.dna) || clonee,
-		role_name_text = "defective clone"
+		role_name_text = role_text
 	)
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/candidate = pick(candidates)
@@ -68,6 +78,8 @@
 
 	if(grab_ghost_when == CLONER_FRESH_CLONE)
 		clonee.grab_ghost()
+		//if(evil)
+		//	clonee.mind.add_antag_datum(/datum/antagonist/evil_clone)
 		to_chat(clonee, span_notice("<b>Consciousness slowly creeps over you as your body regenerates.</b><br><i>So this is what cloning feels like?</i>"))
 
 	if(grab_ghost_when == CLONER_MATURE_CLONE)
@@ -114,9 +126,12 @@
 		to_chat(occupant, "<span class='notice'><b>There is a bright flash!</b><br><i>You feel like a new being.</i></span>")
 		mob_occupant.flash_act()
 
-	var/policy = get_policy(POLICY_REVIVAL_CLONER) || get_policy(POLICY_REVIVAL)
-	if(policy)
-		to_chat(occupant, policy)
+	//var/policy = get_policy(POLICY_REVIVAL_CLONER) || get_policy(POLICY_REVIVAL) //You're a new person, no revival happening.
+	//if(policy)
+	//	to_chat(occupant, policy)
+	
+	if(evil)
+		mob_occupant.mind.add_antag_datum(/datum/antagonist/evil_clone)
 
 	mob_occupant.adjustOrganLoss(ORGAN_SLOT_BRAIN, mob_occupant.getCloneLoss())
 
@@ -145,6 +160,30 @@
 	unset_busy_human_dummy(REF(src))
 	LAZYSET(cached_clone_images, key, preview)
 	return preview
+
+/obj/machinery/clonepod/experimental/emag_act(mob/user)
+	if(!evil)
+		var/mob/living/mob_occupant = occupant
+		if(occupant)
+			mob_occupant.mind.add_antag_datum(/datum/antagonist/evil_clone)
+		evil = TRUE //Cloner will make EVIL clones from now on.
+		to_chat(user, "<span class='warning'>You corrupt the genetic compiler.</span>")
+		add_fingerprint(user)
+		log_cloning("[key_name(user)] emagged [src] at [AREACOORD(src)], causing it to malfunction.")
+	else
+		to_chat(user, "The cloner is already malfunctioning.")
+
+/obj/machinery/clonepod/experimental/emp_act(severity)
+	. = ..()
+	if (!(. & EMP_PROTECT_SELF))
+		if(prob(100/severity) && !evil)
+			evil = TRUE
+			//SPEAK(Gibberish("Exposure to electromagnetic fields has caused morality failure." ,0))
+			log_cloning("[src] at [AREACOORD(src)] corrupted due to EMP pulse.")
+			connected_message(Gibberish("EMP-caused Morality Failure", 0))
+			var/mob/living/mob_occupant = occupant
+			if(occupant)
+				mob_occupant.mind.add_antag_datum(/datum/antagonist/evil_clone)
 
 //Prototype cloning console, much more rudimental and lacks modern functions such as saving records, autocloning, or safety checks.
 /obj/machinery/computer/prototype_cloning
