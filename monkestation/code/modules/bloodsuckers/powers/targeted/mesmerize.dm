@@ -14,10 +14,11 @@
 	power_explanation = "Mesmerize:\n\
 		Click any player to attempt to mesmerize them.\n\
 		You cannot wear anything covering your face, and both parties must be facing eachother. Obviously, both parties need to not be blind. \n\
-		If your target is already mesmerized or a Monster Hunter, the Power will fail.\n\
+		If your target is already mesmerized, mindshielded or a Monster Hunter, the Power will fail.\n\
 		Once mesmerized, the target will be unable to move for a certain amount of time, scaling with level.\n\
 		At level 2, your target will additionally be muted.\n\
 		At level 3, you will be able to use the power through items covering your face.\n\
+		At level 4, you will be able to use the power on those with eye protection. \n\
 		At level 5, you will be able to mesmerize regardless of your target's direction.\n\
 		Higher levels will increase the time of the mesmerize's freeze."
 	power_flags = NONE
@@ -68,6 +69,14 @@
 	if(current_target.stat > CONSCIOUS)
 		owner.balloon_alert(owner, "[current_target] is not [(current_target.stat == DEAD || HAS_TRAIT_NOT_FROM(current_target, TRAIT_FAKEDEATH, SPECIES_TRAIT)) ? "alive" : "conscious"].")
 		return FALSE
+	// Target is mindshielded
+	if(HAS_TRAIT(current_target, TRAIT_MINDSHIELD))
+		owner.balloon_alert(owner, "[current_target] is mind shielded.")
+		return FALSE
+	// Flash protection
+	if((current_target.get_eye_protection() >= FLASH_PROTECTION_FLASH || !isipc(current_target)) && level_current <= 3) // Snowflake exception for IPCs because this shouldn't be immune.
+		owner.balloon_alert(owner, "[current_target] has eye protection.")
+		return FALSE
 	// Target has eyes?
 	if(!current_target.get_organ_slot(ORGAN_SLOT_EYES) && !issilicon(current_target))
 		owner.balloon_alert(owner, "[current_target] has no eyes.")
@@ -109,7 +118,7 @@
 		return
 
 	var/power_time = (9 SECONDS) + level_current * (1.5 SECONDS)
-	if(IS_MONSTERHUNTER(mesmerized_target))
+	if(IS_MONSTERHUNTER(mesmerized_target) || mesmerized_target.can_block_magic(MAGIC_RESISTANCE_HOLY|MAGIC_RESISTANCE_MIND))
 		to_chat(mesmerized_target, span_notice("You feel your eyes burn for a while, but it passes."))
 		return
 	if(HAS_TRAIT_FROM(mesmerized_target, TRAIT_MUTE, MESMERIZED_TRAIT))
