@@ -74,7 +74,7 @@
 		owner.balloon_alert(owner, "[current_target] is mind shielded.")
 		return FALSE
 	// Flash protection
-	if((current_target.get_eye_protection() >= FLASH_PROTECTION_FLASH || !isipc(current_target)) && level_current <= 3) // Snowflake exception for IPCs because this shouldn't be immune.
+	if((current_target.get_eye_protection() >= FLASH_PROTECTION_FLASH && !isipc(current_target)) && level_current <= 3) // Snowflake exception for IPCs because they shouldn't be immune.
 		owner.balloon_alert(owner, "[current_target] has eye protection.")
 		return FALSE
 	// Target has eyes?
