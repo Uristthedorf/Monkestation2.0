@@ -49,8 +49,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 			return TRUE
 		if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 			return TRUE //no tele-grooming
-		if(HAS_TRAIT(hairdresser, TRAIT_SHAVED))
+		if(hairdresser.facial_hairstyle == "Shaved")
 			to_chat(hairdresser, span_notice("If only growing back facial hair were that easy for you..."))
+			return TRUE
 		hairdresser.facial_hairstyle = new_style
 	else
 		hairdresser.facial_hairstyle = "Shaved"
@@ -61,8 +62,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 		return TRUE
 	if(!user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return TRUE //no tele-grooming
-	if(HAS_TRAIT(hairdresser, TRAIT_BALD))
+	if(hairdresser.hairstyle == "Bald")
 		to_chat(hairdresser, span_notice("If only growing back hair were that easy for you..."))
+		return TRUE
 
 	hairdresser.hairstyle = new_style
 

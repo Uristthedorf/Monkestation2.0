@@ -170,7 +170,7 @@
 					if(!get_location_accessible(H, location))
 						to_chat(user, span_warning("The mask is in the way!"))
 						return
-					if(HAS_TRAIT(H, TRAIT_SHAVED))
+					if(H.facial_hairstyle == "Shaved")
 						to_chat(user, span_warning("[H] is just way too shaved. Like, really really shaved."))
 						return
 					user.visible_message(span_notice("[user] tries to change [H]'s facial hairstyle using [src]."), span_notice("You try to change [H]'s facial hairstyle using [src]."))
@@ -225,7 +225,7 @@
 				if(!get_location_accessible(H, location))
 					to_chat(user, span_warning("The headgear is in the way!"))
 					return
-				if(HAS_TRAIT(H, TRAIT_BALD))
+				if(H.hairstyle == "Bald")
 					to_chat(user, span_warning("[H] is just way too bald. Like, really really bald."))
 					return
 				user.visible_message(span_notice("[user] tries to change [H]'s hairstyle using [src]."), span_notice("You try to change [H]'s hairstyle using [src]."))
