@@ -204,6 +204,9 @@
 		drunk_value -= 70 //So that the drunk personality can spice things up without being killed by liver failure
 		return
 	if(SSshuttle.emergency.mode == SHUTTLE_DOCKED && is_station_level(owner.z))// Don't put us in a deep sleep if the shuttle's here. QoL, mainly.
+		to_chat(owner, span_warning("You're so tired... but you can't miss that shuttle..."))
+	else
+		owner.Sleeping(90 SECONDS)
 
 /// Status effect for being fully drunk (not tipsy).
 /atom/movable/screen/alert/status_effect/drunk

@@ -261,11 +261,11 @@
 /datum/brain_trauma/severe/split_personality/blackout/on_gain()
 	. = ..()
 	RegisterSignal(owner, COMSIG_ATOM_SPLASHED, PROC_REF(on_splashed))
-	notify_ghosts("[owner] is blacking out!", source = owner, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Bro I'm not even drunk right now")
 	if(HAS_TRAIT(owner, TRAIT_ALCOHOL_TOLERANCE)) // Monke, alcohol traits modify blackout length
 		duration_in_seconds /= 2
 	if(HAS_TRAIT(owner, TRAIT_LIGHT_DRINKER))
 		duration_in_seconds *= 2
+	notify_ghosts("[owner] is blacking out!", source = owner, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Bro I'm not even drunk right now")
 
 /datum/brain_trauma/severe/split_personality/blackout/on_lose()
 	. = ..()
@@ -289,7 +289,7 @@
 		return
 	if(duration_in_seconds <= 0)
 		qdel(src)
-			return
+		return
 	else if(duration_in_seconds <= 60 && !(duration_in_seconds % 20))
 		to_chat(owner, span_warning("You have [duration_in_seconds] seconds left before sobering up!"))
 	if(prob(10) && !HAS_TRAIT(owner, TRAIT_DISCOORDINATED_TOOL_USER))
@@ -301,7 +301,7 @@
 	if(prob(15))
 		playsound(owner,'sound/effects/sf_hiccup_male_01.ogg', 50)
 		owner.emote("hiccup")
-	owner.adjustStaminaLoss(-5) //too drunk to feel anything
+	owner.stamina.adjust(5 * REM * seconds_per_tick, TRUE) //too drunk to feel anything
 	duration_in_seconds -= seconds_per_tick
 
 /mob/living/split_personality/blackout
