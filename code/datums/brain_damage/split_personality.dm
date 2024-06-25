@@ -262,6 +262,10 @@
 	. = ..()
 	RegisterSignal(owner, COMSIG_ATOM_SPLASHED, PROC_REF(on_splashed))
 	notify_ghosts("[owner] is blacking out!", source = owner, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Bro I'm not even drunk right now")
+	if(HAS_TRAIT(owner, TRAIT_ALCOHOL_TOLERANCE))
+		duration_in_seconds /= 2
+	if(HAS_TRAIT(owner, TRAIT_LIGHT_DRINKER))
+		duration_in_seconds *= 2
 
 /datum/brain_trauma/severe/split_personality/blackout/on_lose()
 	. = ..()
