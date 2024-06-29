@@ -123,7 +123,7 @@
 	cooldown_time = 20 SECONDS
 	invocation_type = INVOCATION_NONE
 
-	spell_requirements = SPELL_REQUIRES_HUMAN
+	spell_requirements = NONE
 	antimagic_flags = NONE
 	spell_max_level = 5 //max is actually 7(the point where the sprites stop working), but the implant can only reach 5
 
@@ -191,7 +191,7 @@
 	can_charge = FALSE //ITS A SPEAR
 	item_flags = NEEDS_PERMIT | DROPDEL | ABSTRACT | NO_MAT_REDEMPTION
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
-	light_system = MOVABLE_LIGHT
+	light_system = OVERLAY_LIGHT
 	light_outer_range = 3
 	light_power = 1
 	max_charges = 1
