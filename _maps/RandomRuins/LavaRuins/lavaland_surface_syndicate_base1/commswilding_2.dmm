@@ -73,6 +73,11 @@
 	},
 /turf/open/floor/circuit,
 /area/ruin/syndicate_lava_base/telecomms)
+"t" = (
+/obj/structure/table/wood,
+/obj/item/megaphone,
+/turf/open/floor/wood,
+/area/ruin/syndicate_lava_base/telecomms)
 "x" = (
 /obj/structure/closet/crate/secure/freezer/commsagent,
 /turf/open/floor/plating,
@@ -85,6 +90,10 @@
 	dir = 4
 	},
 /turf/open/floor/iron/dark/textured,
+/area/ruin/syndicate_lava_base/telecomms)
+"C" = (
+/obj/machinery/porta_turret/syndicate,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/ruin/syndicate_lava_base/telecomms)
 "D" = (
 /obj/machinery/firealarm/directional/west,
@@ -197,23 +206,23 @@
 
 (1,1,1) = {"
 a
+C
 k
 k
 k
-k
-k
+C
 a
 a
 "}
 (2,1,1) = {"
-k
+C
 k
 H
 s
 D
 k
 k
-k
+C
 "}
 (3,1,1) = {"
 k
@@ -243,7 +252,7 @@ y
 y
 Q
 k
-k
+C
 "}
 (6,1,1) = {"
 a
@@ -251,7 +260,7 @@ K
 y
 b
 y
-T
+t
 K
 a
 "}

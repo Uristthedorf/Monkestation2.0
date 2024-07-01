@@ -310,6 +310,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/testlab)
+"QO" = (
+/obj/machinery/porta_turret/syndicate,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/ruin/syndicate_lava_base/testlab)
 "Rn" = (
 /obj/structure/cable,
 /turf/open/floor/engine,
@@ -383,7 +387,7 @@ aA
 (2,1,1) = {"
 aA
 aA
-em
+QO
 em
 em
 em
@@ -411,7 +415,7 @@ aA
 aA
 "}
 (4,1,1) = {"
-em
+QO
 em
 gX
 Lc
@@ -486,7 +490,7 @@ aA
 aA
 "}
 (9,1,1) = {"
-em
+QO
 It
 Vo
 ZR

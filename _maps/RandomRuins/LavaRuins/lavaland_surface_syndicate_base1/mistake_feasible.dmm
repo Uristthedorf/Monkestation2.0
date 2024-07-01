@@ -137,6 +137,10 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/testlab)
+"v" = (
+/obj/machinery/porta_turret/syndicate,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/ruin/syndicate_lava_base/testlab)
 "w" = (
 /obj/machinery/airalarm/directional/south,
 /obj/effect/mapping_helpers/airalarm/syndicate_access,
@@ -321,7 +325,7 @@ a
 a
 "}
 (3,1,1) = {"
-D
+v
 D
 h
 h
@@ -391,7 +395,7 @@ l
 F
 "}
 (8,1,1) = {"
-D
+v
 D
 h
 h

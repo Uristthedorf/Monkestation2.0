@@ -130,6 +130,10 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/telecomms)
+"E" = (
+/obj/machinery/porta_turret/syndicate,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/ruin/syndicate_lava_base/telecomms)
 "G" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
@@ -139,6 +143,7 @@
 "K" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/item/megaphone,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/telecomms)
 "M" = (
@@ -178,16 +183,16 @@
 
 (1,1,1) = {"
 a
+E
 f
 f
 f
-f
-f
+E
 a
 a
 "}
 (2,1,1) = {"
-f
+E
 f
 j
 M
@@ -224,7 +229,7 @@ o
 A
 s
 f
-f
+E
 "}
 (6,1,1) = {"
 a

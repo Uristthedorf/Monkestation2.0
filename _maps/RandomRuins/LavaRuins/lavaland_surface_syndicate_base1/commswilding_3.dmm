@@ -101,6 +101,7 @@
 /obj/machinery/door/poddoor{
 	id = "lavalandsyndi_fredrickleft"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/telecomms)
 "y" = (
@@ -126,12 +127,14 @@
 	pixel_y = 13
 	},
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/item/megaphone,
 /turf/open/floor/iron/grimy,
 /area/ruin/syndicate_lava_base/telecomms)
 "A" = (
 /obj/machinery/door/poddoor{
 	id = "lavalandsyndi_fredrickright"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/telecomms)
 "B" = (
@@ -207,6 +210,10 @@
 /obj/structure/closet/crate/secure/freezer/commsagent,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/telecomms)
+"O" = (
+/obj/machinery/porta_turret/syndicate,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/ruin/syndicate_lava_base/telecomms)
 "P" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
 	dir = 5
@@ -259,16 +266,16 @@
 
 (1,1,1) = {"
 a
+O
 G
 G
 G
-G
-G
+O
 a
 a
 "}
 (2,1,1) = {"
-G
+O
 G
 t
 B
@@ -305,7 +312,7 @@ y
 d
 G
 G
-G
+O
 "}
 (6,1,1) = {"
 a

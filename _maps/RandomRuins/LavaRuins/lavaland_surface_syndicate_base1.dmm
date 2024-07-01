@@ -685,7 +685,7 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
 "fx" = (
-/obj/structure/sign/warning/secure_area,
+/obj/machinery/porta_turret/syndicate,
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/ruin/syndicate_lava_base/cargo)
 "fB" = (
@@ -2174,7 +2174,7 @@
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/arrivals)
 "oF" = (
-/obj/structure/sign/warning/secure_area,
+/obj/machinery/porta_turret/syndicate,
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/ruin/syndicate_lava_base/arrivals)
 "oH" = (
@@ -3197,6 +3197,10 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/main)
+"Eu" = (
+/obj/machinery/porta_turret/syndicate,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/ruin/syndicate_lava_base/chemistry)
 "Ev" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/cup/rag{
@@ -3517,6 +3521,10 @@
 	dir = 4
 	},
 /turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/engineering)
+"JF" = (
+/obj/machinery/porta_turret/syndicate,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/ruin/syndicate_lava_base/engineering)
 "JM" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer4{
@@ -4271,6 +4279,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/engineering)
+"Xy" = (
+/obj/machinery/porta_turret/syndicate,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/ruin/syndicate_lava_base/medbay)
 "XK" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /obj/machinery/atmospherics/pipe/layer_manifold,
@@ -4406,6 +4418,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer2,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/main)
+"YY" = (
+/obj/machinery/porta_turret/syndicate,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/ruin/syndicate_lava_base/virology)
 "Za" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -4799,7 +4815,7 @@ ab
 ab
 ab
 ab
-eh
+YY
 eh
 eh
 eh
@@ -4857,7 +4873,7 @@ aj
 eh
 eh
 eh
-eh
+YY
 ab
 ab
 ab
@@ -5099,7 +5115,7 @@ ab
 ab
 ab
 ab
-eh
+YY
 eh
 eI
 eI
@@ -5744,7 +5760,7 @@ ab
 ab
 ab
 ab
-as
+Eu
 as
 rE
 dB
@@ -5826,7 +5842,7 @@ mX
 Kz
 aQ
 mT
-mT
+oF
 ab
 ab
 ab
@@ -5944,7 +5960,7 @@ ab
 ab
 ab
 ab
-as
+Eu
 as
 as
 dI
@@ -6076,7 +6092,7 @@ yk
 nA
 oc
 kQ
-kQ
+Xy
 si
 ab
 ab
@@ -6196,7 +6212,7 @@ ab
 ab
 ab
 ab
-dy
+fx
 dy
 ZH
 Pb
@@ -6378,7 +6394,7 @@ PZ
 rO
 AB
 ju
-ju
+JF
 ab
 ab
 ab
@@ -6447,7 +6463,7 @@ ab
 ab
 ab
 ab
-dy
+fx
 dy
 eE
 fe
@@ -6506,7 +6522,7 @@ gf
 dy
 eF
 eF
-dy
+fx
 si
 si
 ab
@@ -6527,7 +6543,7 @@ RK
 pm
 ju
 oH
-ju
+JF
 ab
 ab
 ab
@@ -6561,7 +6577,7 @@ si
 ab
 ab
 ab
-ju
+JF
 ju
 ju
 ju
@@ -6765,6 +6781,7 @@ ab
 ab
 ab
 ab
+JF
 ju
 ju
 ju
@@ -6773,8 +6790,7 @@ ju
 ju
 ju
 ju
-ju
-ju
+JF
 ab
 ab
 ab
