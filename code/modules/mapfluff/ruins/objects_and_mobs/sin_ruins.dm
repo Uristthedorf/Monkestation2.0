@@ -76,14 +76,24 @@
 	. = ..()
 	if(.)
 		return
-	user.visible_message("<span class='warning'>[user] opens the bag and \
-		and removes a die. The bag then vanishes.</span>",
-		"[span_boldwarning("You open the bag...!")]\n\
-		<span class='danger'>And see a bag full of dice. Confused, \
-		you take one... and the bag vanishes.</span>")
+	var/loot = rand(1,100) // Monke, chance to get a cursed monkey idol.
 	var/turf/T = get_turf(user)
-	var/obj/item/dice/d20/fate/one_use/critical_fail = new(T)
-	user.put_in_hands(critical_fail)
+	if(loot >= 25)
+		user.visible_message("<span class='warning'>[user] opens the bag and \
+			and removes a die. The bag then vanishes.</span>",
+			"[span_boldwarning("You open the bag...!")]\n\
+			<span class='danger'>And see a bag full of dice. Confused, \
+			you take one... and the bag vanishes.</span>")
+		var/obj/item/dice/d20/fate/one_use/critical_fail = new(T)
+		user.put_in_hands(critical_fail)
+	else
+		user.visible_message("<span class='warning'>[user] opens the bag and \
+			and removes an idol. The bag then vanishes.</span>",
+			"[span_boldwarning("You open the bag...!")]\n\
+			<span class='danger'>And see a golden idol! \
+			you take it... and the bag vanishes.</span>")
+		var/obj/item/goldenmonkey/cursed/prize = new(T)
+		user.put_in_hands(prize)
 	qdel(src)
 
 /obj/effect/gluttony //Gluttony's wall: Used in the Gluttony ruin. Only lets the overweight through.
