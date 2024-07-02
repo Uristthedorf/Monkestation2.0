@@ -103,6 +103,16 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 			user.client.give_award(/datum/award/achievement/misc/pulse, user)
 			return
 
+		if(prob(0.1)) // Monke, 1 in a thousand chance to get a golden monkey
+			new /obj/item/goldenmonkey(src)
+			visible_message(span_notice("[src] dispenses.. woah, a gun! Way past cool."), span_notice("You hear a chime and a shot.")) // Needs message.
+			return
+
+		if(prob(0.1)) // Monke, another chance for CURSED monkey
+			new /obj/item/goldenmonkey/cursed(src)
+			visible_message(span_notice("[src] dispenses.. woah, a gun! Way past cool."), span_notice("You hear a chime and a shot.")) // Needs spooky message.
+			return
+
 		var/prizeselect
 		if(prize_override)
 			prizeselect = pick_weight(prize_override)
