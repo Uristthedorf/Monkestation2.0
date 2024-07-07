@@ -9,7 +9,7 @@
 	var/mob/living/new_holder
 	///The callback at the end of a round to check if the greentext has been completed.
 	var/datum/callback/roundend_callback
-	var/prize = 1000
+	var/prize = 2500
 
 /obj/item/goldenmonkey/Initialize(mapload)
 	. = ..()
@@ -57,3 +57,8 @@
 
 /obj/item/goldenmonkey/cursed/reward()
 	new_holder.client.client_token_holder.adjust_antag_tokens(LOW_THREAT, 1)
+
+/datum/export/monkeyidol
+	cost = CARGO_CRATE_VALUE * 100
+	unit_name = "Monkey Idol"
+	export_types = list(/obj/item/goldenmonkey)
