@@ -53,7 +53,10 @@
 	name = "cursed monkey idol"
 	desc = "An ancient relic of immesurable value, you sense an evil energy coming from it..."
 	icon_state = "ook" // NEEDS SPRITE.
-	AddComponent(/datum/component/curse_of_hunger) //Could there be a more interesting way to make it cursed?
+
+/obj/item/goldenmonkey/cursed/Initialize(mapload)
+	. = ..()
+	src.AddComponent(/datum/component/curse_of_hunger) //Could there be a more interesting way to make it cursed?
 
 /obj/item/goldenmonkey/cursed/reward()
 	new_holder.client.client_token_holder.adjust_antag_tokens(LOW_THREAT, 1)
