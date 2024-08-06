@@ -203,13 +203,13 @@ If you create T5+ please take a pass at mech_fabricator.dm. The parts being good
 
 /obj/item/storage/part_replacer/cargo //used in a cargo crate
 
-/obj/item/storage/part_replacer/cargo/PopulateContents()
+/obj/item/storage/part_replacer/cargo/PopulateContents() // Monkestation, cargo part replacer has T2 parts.
 	for(var/i in 1 to 10)
-		new /obj/item/stock_parts/capacitor(src)
-		new /obj/item/stock_parts/scanning_module(src)
-		new /obj/item/stock_parts/manipulator(src)
-		new /obj/item/stock_parts/micro_laser(src)
-		new /obj/item/stock_parts/matter_bin(src)
+		new /obj/item/stock_parts/capacitor/adv(src)
+		new /obj/item/stock_parts/scanning_module/adv(src)
+		new /obj/item/stock_parts/manipulator/nano(src)
+		new /obj/item/stock_parts/micro_laser/high(src)
+		new /obj/item/stock_parts/matter_bin/adv(src)
 
 /obj/item/storage/part_replacer/cyborg
 	name = "rapid part exchange device"
