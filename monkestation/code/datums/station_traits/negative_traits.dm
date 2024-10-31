@@ -36,7 +36,7 @@
 /datum/station_trait/uncommonlanguage/proc/on_job_after_spawn(datum/source, datum/job/job, mob/living/spawned, client/player_client)
 	SIGNAL_HANDLER
 	
-	if(job.title = JOB_ASSISTANT)
+	if(job.title == JOB_ASSISTANT)
 		spawned.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
 
 	if(!(job.departments_bitflags & department_to_apply_to))
