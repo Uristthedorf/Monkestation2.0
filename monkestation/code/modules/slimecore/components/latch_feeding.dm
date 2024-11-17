@@ -119,7 +119,6 @@
 		else
 			living_target.apply_damage(damage_amount, BRUTE, spread_damage = TRUE)
 		basic_mob.adjustBruteLoss(-damage_amount, TRUE)
-		basic_mob.adjustFireLoss(-damage_amount, TRUE)
 
 	if(!QDELETED(parent)) // ??? I was getting runtimes for no parent but IDK how
 		SEND_SIGNAL(parent, COMSIG_MOB_FEED, target, hunger_restore)

@@ -495,6 +495,9 @@
 /mob/living/basic/slime/proc/on_slime_pre_attack(mob/living/basic/slime/our_slime, atom/target, proximity, modifiers)
 	SIGNAL_HANDLER
 
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		return COMPONENT_HOSTILE_NO_ATTACK
+
 	if(isAI(target)) //The aI is not tasty!
 		target.balloon_alert(our_slime, "not tasty!")
 		return COMPONENT_HOSTILE_NO_ATTACK
