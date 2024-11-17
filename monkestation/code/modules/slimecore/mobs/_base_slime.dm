@@ -412,6 +412,14 @@
 	for(var/datum/slime_trait/trait as anything in slime_traits)
 		new_slime.add_trait(trait.type)
 	new_slime.recompile_ai_tree()
+	if(mind.has_antag_datum(/datum/antagonist/pyro_slime)) //Pyroclastic slime gives birth to sentient slimes!!!
+		SSpolling.poll_ghosts_for_target(check_jobban = ROLE_SENTIENCE, poll_time = 10 SECONDS, checked_target = new_slime, ignore_category = POLL_IGNORE_PYROSLIME, alert_pic = pyro, role_name_text = "pyroclastic anomaly slime")
+		if(isnull(chosen_one))
+			return
+		new_slime.key = chosen_one.key
+		new_slime.mind.special_role = ROLE_PYROCLASTIC_SLIME
+		new_slime.mind.add_antag_datum(/datum/antagonist/pyro_slime)
+		new_slime.log_message("was made into a slime by pyroclastic slime split", LOG_GAME)
 
 /mob/living/basic/slime/proc/start_mutating(random = FALSE)
 	if(!pick_mutation(random))
