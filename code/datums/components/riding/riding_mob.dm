@@ -243,13 +243,14 @@
 	SIGNAL_HANDLER
 
 	for(var/i in human_parent.buckled_mobs)
-		var/mob/living/rider = i
-		human_parent.unbuckle_mob(rider)
-		rider.Paralyze(1 SECONDS)
-		rider.Knockdown(4 SECONDS)
-		human_parent.visible_message(span_danger("[rider] topples off of [human_parent] as they both fall to the ground!"), \
-					span_warning("You fall to the ground, bringing [rider] with you!"), span_hear("You hear two consecutive thuds."), COMBAT_MESSAGE_RANGE, ignored_mobs=rider)
-		to_chat(rider, span_danger("[human_parent] falls to the ground, bringing you with [human_parent.p_them()]!"))
+		if(!isslime(rider)) //No resting to get away from slimes.
+			var/mob/living/rider = i
+			human_parent.unbuckle_mob(rider)
+			rider.Paralyze(1 SECONDS)
+			rider.Knockdown(4 SECONDS)
+			human_parent.visible_message(span_danger("[rider] topples off of [human_parent] as they both fall to the ground!"), \
+						span_warning("You fall to the ground, bringing [rider] with you!"), span_hear("You hear two consecutive thuds."), COMBAT_MESSAGE_RANGE, ignored_mobs=rider)
+			to_chat(rider, span_danger("[human_parent] falls to the ground, bringing you with [human_parent.p_them()]!"))
 
 /datum/component/riding/creature/human/handle_vehicle_layer(dir)
 	var/atom/movable/AM = parent
