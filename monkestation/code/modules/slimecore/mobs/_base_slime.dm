@@ -562,6 +562,22 @@
 	worn_accessory = attacking_item
 	attacking_item.forceMove(src)
 	update_appearance()
+	
+	if(check_item_passthrough(attacking_item, user))
+		return
+
+///Checks if an item harmlessly passes through the slime
+/mob/living/basic/slime/proc/check_item_passthrough(obj/item/attacking_item, mob/living/user)
+	if(attacking_item.force <= 0)
+		return FALSE
+
+	if(!prob(25))
+		return FALSE
+
+	user.do_attack_animation(src)
+	user.changeNext_move(CLICK_CD_MELEE)
+	to_chat(user, span_danger("[attacking_item] passes right through [src]!"))
+	return TRUE
 
 /mob/living/basic/slime/attack_hand(mob/living/carbon/human/user, list/modifiers)
 	. = ..()
@@ -586,6 +602,26 @@
 		powerlevel++
 	
 	. = ..()
+
+/mob/living/basic/slime/emp_act(severity)
+	. = ..()
+	if(. & EMP_PROTECT_SELF)
+		return
+	powerlevel = 0 // oh no, the power!
+
+///If a slime is attack with an empty hand, shoves included, try to wrestle them off the mob they are on
+/mob/living/basic/slime/proc/on_attack_hand(mob/living/basic/slime/defender_slime, mob/living/attacker)
+	SIGNAL_HANDLER
+
+	if(isnull(buckled))
+		return
+
+	if(buckled == attacker ? prob(60) : prob(30)) //its easier to remove the slime from yourself
+		attacker.visible_message(span_warning("[attacker] attempts to wrestle \the [defender_slime.name] off [buckled == attacker ? "" : buckled] !"), \
+		span_danger("[buckled == attacker ? "You attempt" : "[attacker] attempts" ] to wrestle \the [defender_slime.name] off [buckled == attacker ? "" : buckled]!"))
+		return
+
+	attacker.visible_message(span_warning("[attacker] manages to wrestle \the [defender_slime.name] off!"), span_notice("You manage to wrestle \the [defender_slime.name] off!"))
 
 /mob/living/basic/slime/proc/apply_water()
 	adjustBruteLoss(rand(15, 20))
