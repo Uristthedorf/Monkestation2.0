@@ -401,8 +401,7 @@
 	SEND_SIGNAL(src, COMSIG_MOB_ADJUST_HUNGER, -200)
 
 	slime_flags &= ~SPLITTING_SLIME
-	if(!mind)
-		ai_controller.reset_ai_status()
+	ai_controller.reset_ai_status()
 
 	var/mob/living/basic/slime/new_slime = new(loc, current_color.type, TRUE)
 	new_slime.mutation_chance = mutation_chance
@@ -462,8 +461,7 @@
 	change_color(mutating_into)
 
 	slime_flags &= ~MUTATING_SLIME
-	if(!mind)
-		ai_controller.reset_ai_status()
+	ai_controller.reset_ai_status()
 
 
 /mob/living/basic/slime/proc/pick_mutation(random = FALSE)
