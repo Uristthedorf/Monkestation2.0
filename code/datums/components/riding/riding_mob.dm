@@ -243,8 +243,8 @@
 	SIGNAL_HANDLER
 
 	for(var/i in human_parent.buckled_mobs)
+		var/mob/living/rider = i
 		if(!isslime(rider)) //No resting to get away from slimes.
-			var/mob/living/rider = i
 			human_parent.unbuckle_mob(rider)
 			rider.Paralyze(1 SECONDS)
 			rider.Knockdown(4 SECONDS)
