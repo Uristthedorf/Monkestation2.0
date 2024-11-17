@@ -19,6 +19,10 @@
 
 	melee_damage_lower = 5
 	melee_damage_upper = 15
+	
+	habitable_atmos = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	
+	damage_coeff = list(BRUTE = 1, BURN = -1, TOX = 1, STAMINA = 0, OXY = 1)
 
 	//emote_see = list("jiggles", "bounces in place")
 	speak_emote = list("blorbles")
@@ -190,7 +194,7 @@
 		buckled?.unbuckle_mob(src, force = TRUE)
 		return
 	else if(CanReach(target) && !HAS_TRAIT(target, TRAIT_LATCH_FEEDERED))
-		AddComponent(/datum/component/latch_feeding, target, TOX, 2, 4, FALSE, CALLBACK(src, TYPE_PROC_REF(/mob/living/basic/slime, latch_callback), target))
+		AddComponent(/datum/component/latch_feeding, target, CLONE, 2, 4, FALSE, CALLBACK(src, TYPE_PROC_REF(/mob/living/basic/slime, latch_callback), target))
 		return
 	. = ..()
 
@@ -360,7 +364,8 @@
 	SEND_SIGNAL(src, COMSIG_MOB_ADJUST_HUNGER, -200)
 
 	slime_flags &= ~SPLITTING_SLIME
-	ai_controller.reset_ai_status()
+	if(!mind)
+		ai_controller.reset_ai_status()
 
 	var/mob/living/basic/slime/new_slime = new(loc, current_color.type, TRUE)
 	new_slime.mutation_chance = mutation_chance
@@ -412,7 +417,8 @@
 	change_color(mutating_into)
 
 	slime_flags &= ~MUTATING_SLIME
-	ai_controller.reset_ai_status()
+	if(!mind)
+		ai_controller.reset_ai_status()
 
 
 /mob/living/basic/slime/proc/pick_mutation(random = FALSE)
@@ -508,5 +514,5 @@
 	. = ..()
 	if(SEND_SIGNAL(src, COMSIG_FRIENDSHIP_CHECK_LEVEL, throwingdatum.thrower, FRIENDSHIP_FRIEND))
 		if(!HAS_TRAIT(hit_atom, TRAIT_LATCH_FEEDERED) && isliving(hit_atom))
-			AddComponent(/datum/component/latch_feeding, hit_atom, TOX, 2, 4, FALSE, CALLBACK(src, PROC_REF(latch_callback), hit_atom), FALSE)
+			AddComponent(/datum/component/latch_feeding, hit_atom, CLONE, 2, 4, FALSE, CALLBACK(src, PROC_REF(latch_callback), hit_atom), FALSE)
 			visible_message(span_danger("[throwingdatum.thrower] hucks [src] at [hit_atom] causing the [src] to stick to [hit_atom]."))
