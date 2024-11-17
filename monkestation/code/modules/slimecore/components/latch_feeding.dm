@@ -113,6 +113,10 @@
 		stop_feeding()
 		return
 
+	if(isdead(living_target) == DEAD)
+		stop_feeding()
+		return
+
 	if(!check_and_replace || (check_and_replace && !check_and_replace.Invoke()))
 		if(iscarbon(living_target))
 			living_target.apply_damage(damage_amount, damage_type, spread_damage = TRUE)

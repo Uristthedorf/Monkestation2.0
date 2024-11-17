@@ -60,6 +60,9 @@
 	// for fireman carries, check if the ridden is stunned/restrained
 	else if((ride_check_flags & CARRIER_NEEDS_ARM) && (HAS_TRAIT(living_parent, TRAIT_RESTRAINED) || living_parent.incapacitated(IGNORE_RESTRAINTS|IGNORE_GRAB)))
 		. = FALSE
+	
+	if(isslime(rider)) //Slimes are sticky.
+		. = TRUE
 
 	if(. || !consequences)
 		return
