@@ -149,6 +149,7 @@
 	RegisterSignal(src, COMSIG_MOB_OVERATE, PROC_REF(attempt_change))
 	RegisterSignals(src, list(COMSIG_AI_BLACKBOARD_KEY_CLEARED(BB_CURRENT_PET_TARGET), COMSIG_AI_BLACKBOARD_KEY_SET(BB_CURRENT_PET_TARGET)), PROC_REF(on_blackboard_key_changed))
 	RegisterSignal(src, COMSIG_HOSTILE_PRE_ATTACKINGTARGET, PROC_REF(on_slime_pre_attack))
+	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, PROC_REF(on_attack_hand) )
 
 	for(var/datum/slime_mutation_data/listed as anything in current_color.possible_mutations)
 		var/datum/slime_mutation_data/data = new listed
