@@ -5859,7 +5859,7 @@
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "bOT" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/xenopen{
 	dir = 4
 	},
 /turf/open/floor/engine,
@@ -46740,7 +46740,7 @@
 	name = "Test Chamber";
 	req_access = list("xenobiology")
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /obj/structure/liquid_barrier,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
@@ -63310,7 +63310,7 @@
 /turf/open/floor/wood,
 /area/station/maintenance/port/aft)
 "ujp" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "ujq" = (
