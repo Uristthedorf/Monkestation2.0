@@ -8,7 +8,7 @@
 	inherent_traits = list(
 		TRAIT_DWARF,
 		TRAIT_QUICK_BUILD,
-		TRAIT_NIGHT_VISION,
+		TRAIT_NIGHT_VISION, //Neat to have for lavaland, but will probably still need a light.
 		TRAIT_ALCOHOL_TOLERANCE,
 	)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID
@@ -26,7 +26,7 @@
 	human_who_gained_species.mind.teach_crafting_recipe(/datum/crafting_recipe/trashball)
 
 /datum/species/dwarf/get_species_description()
-	return "A species of small green humanoids. Reknown for their stealth, they are also primarily known for their skill in tinkering and construction, which is on the level of dwarves."
+	return "Dwarves, strike the Earth!"
 
 /datum/species/dwarf/create_pref_unique_perks()
 	var/list/to_add = list()
