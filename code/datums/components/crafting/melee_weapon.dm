@@ -151,3 +151,13 @@
 				/obj/item/shard = 1)
 	category = CAT_WEAPON_MELEE
 	tool_behaviors = list(TOOL_WIRECUTTER)
+
+/datum/crafting_recipe/bambostaff
+	name = "Bamboo Bo Staff"
+	result = /obj/item/bambostaff
+	reqs = list(
+		/obj/item/stack/sheet/mineral/bamboo = 4,
+		/obj/item/grown/log/steel = 2,
+	)
+	time = 8 SECONDS
+	category = CAT_WEAPON_MELEE

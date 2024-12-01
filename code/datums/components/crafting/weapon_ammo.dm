@@ -93,3 +93,25 @@
 		/datum/reagent/consumable/space_cola = 10,
 	)
 	category = CAT_WEAPON_AMMO
+
+/datum/crafting_recipe/sticky_arrow
+	name = "Sticky arrow"
+	result = /obj/item/ammo_casing/arrow/sticky
+	reqs = list(
+		/obj/item/ammo_casing/arrow = 1,
+		/obj/item/food/honeycomb = 3,
+	)
+	time = 5 SECONDS
+	category = CAT_WEAPON_AMMO
+	crafting_flags = CRAFT_CHECK_DENSITY
+
+/datum/crafting_recipe/poison_arrow
+	name = "Poison arrow"
+	result = /obj/item/ammo_casing/arrow/poison
+	reqs = list(
+		/obj/item/ammo_casing/arrow = 1,
+		/obj/item/food/grown/berries/poison = 5,
+	)
+	time = 5 SECONDS
+	category = CAT_WEAPON_AMMO
+	crafting_flags = CRAFT_CHECK_DENSITY
