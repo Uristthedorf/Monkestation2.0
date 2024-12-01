@@ -84,6 +84,15 @@
 	max_integrity = 55
 	w_class = WEIGHT_CLASS_NORMAL
 
+/obj/item/shield/buckler/moonflower
+	name = "moonflower buckler"
+	desc = "A buckler made from a steel-cap reinforced moonflower."
+	icon_state = "moonflower_buckler"
+	inhand_icon_state = "moonflower_buckler"
+	block_chance = 40
+	max_integrity = 40
+	w_class = WEIGHT_CLASS_NORMAL
+
 /obj/item/shield/roman
 	name = "\improper Roman shield"
 	desc = "Bears an inscription on the inside: <i>\"Romanes venio domus\"</i>."
