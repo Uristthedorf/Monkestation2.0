@@ -2,14 +2,16 @@
 	name = "Biotech Compatibility"
 	desc = "Subject is more compatibile with biotechnology such as skillchips."
 	quality = POSITIVE
-	instability = 5
+	instability = 10 //Monke, 5 to 10
 
 /datum/mutation/human/biotechcompat/on_acquiring(mob/living/carbon/human/owner)
 	. = ..()
 	owner.adjust_skillchip_complexity_modifier(1)
+	ADD_TRAIT(owner, TRAIT_BIOTECH_COMPATIBLE, GENETIC_MUTATION)
 
 /datum/mutation/human/biotechcompat/on_losing(mob/living/carbon/human/owner)
 	owner.adjust_skillchip_complexity_modifier(-1)
+	REMOVE_TRAIT(owner, TRAIT_BIOTECH_COMPATIBLE, GENETIC_MUTATION)
 	return ..()
 
 /datum/mutation/human/clever

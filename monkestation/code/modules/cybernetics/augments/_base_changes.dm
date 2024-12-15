@@ -138,6 +138,10 @@
 
 		. = FALSE
 
+		//Trait for always having compatibility.
+		if(HAS_TRAIT(owner, TRAIT_BIOTECH_COMPATIBLE))
+			. = TRUE
+
 		//We check for link here because implants that contain NO_PROTOCOL for every category should work even without an implant.
 		if(!link)
 			return
