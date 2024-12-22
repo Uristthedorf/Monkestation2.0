@@ -47,7 +47,7 @@
 	check_parts = TRUE
 
 /obj/item/grenade/toolbomb/spawned/Initialize(mapload)
-	new /obj/item/storage/toolbox/random(src)
+	new /obj/item/storage/toolbox(src)
 	return ..()
 
 /obj/item/grenade/toolbomb/CheckParts(list/parts_list)
