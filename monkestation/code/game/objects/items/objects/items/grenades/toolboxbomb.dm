@@ -14,7 +14,6 @@
 	throw_speed = 2
 	throw_range = 7
 	flags_1 = CONDUCT_1
-	slot_flags = ITEM_SLOT_BELT
 	active = FALSE
 	det_time = 50
 	display_timer = FALSE
@@ -32,8 +31,8 @@
 	drop_sound = 'sound/items/handling/toolbox_drop.ogg'
 	pickup_sound = 'sound/items/handling/toolbox_pickup.ogg'
 	material_flags = MATERIAL_EFFECTS | MATERIAL_COLOR
-	var/latches = "single_latch"
-	var/has_latches = TRUE
+//	var/latches = "single_latch"
+//	var/has_latches = TRUE
 	wound_bonus = 5
 
 	shrapnel_type = /obj/projectile/bullet/shrapnel
@@ -53,14 +52,14 @@
 
 /obj/item/grenade/toolbomb/CheckParts(list/parts_list)
 	..()
-	var/obj/item/reagent_containers/cup/soda_cans/can = locate() in contents
-	if(!can)
-		stack_trace("[src] generated without a soda can!") //this shouldn't happen.
+	var/obj/item/storage/toolbox/box = locate() in contents
+	if(!box)
+		stack_trace("[src] generated without a toolbox!") //this shouldn't happen.
 		qdel(src)
 		return
-	can.pixel_x = 0 //Reset the sprite's position to make it consistent with the rest of the IED
-	can.pixel_y = 0
-	var/mutable_appearance/can_underlay = new(can)
+	box.pixel_x = 0 //Reset the sprite's position to make it consistent with the rest of the IED
+	box.pixel_y = 0
+	var/mutable_appearance/can_underlay = new(box)
 	can_underlay.layer = FLOAT_LAYER
 	can_underlay.plane = FLOAT_PLANE
 	underlays += can_underlay
