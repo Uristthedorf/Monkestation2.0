@@ -81,13 +81,6 @@
 	explosion(src, devastation_range = -1, heavy_impact_range = 1, light_impact_range = 2, flame_range = 4) // small explosion, plus a very large fireball.
 	qdel(src)
 
-/obj/item/grenade/toolbomb/change_det_time()
-	return //always be random.
-
-/obj/item/grenade/toolbomb/examine(mob/user)
-	. = ..()
-	. += "You can't tell when it will explode!"
-
 //IED cluster grenade
 /obj/item/grenade/clusterbuster/ied
 	name = "Revolution Special"
