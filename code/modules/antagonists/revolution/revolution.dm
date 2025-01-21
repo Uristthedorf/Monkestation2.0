@@ -758,14 +758,17 @@
 	if(!owner && !owner.mind)
 		return
 	var/dist = 1000
-	var/mob/living/command
-	for(var/mob/living/located as anything in SSjob.get_all_heads())
-		if(get_dist(owner, located) < dist && considered_alive(located.mind))
-			dist = get_dist(owner, located)
-			command = located
-	if(QDELETED(command))
+	var/mob/living/body
+	var/mob/living/target
+	var/list/heads_list = SSjob.get_all_heads()
+	for(var/datum/mind/command_mind as anything in heads_list)
+		body = command_mind.current
+		if(get_dist(owner, body) < dist && considered_alive(command_mind))
+			dist = get_dist(owner, body)
+			target = body
+	if(QDELETED(body))
 		return
-	scan_target = command
+	scan_target = target
 
 #undef DECONVERTER_REVS_WIN
 #undef DECONVERTER_STATION_WIN
