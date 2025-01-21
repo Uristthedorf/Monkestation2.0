@@ -52,6 +52,7 @@
 /datum/antagonist/rev/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/M = mob_override || owner.current
 	handle_clown_mutation(M, mob_override ? null : "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself.")
+	M.apply_status_effect(/datum/status_effect/agent_pinpointer/hunt_command)
 	add_team_hud(M, /datum/antagonist/rev)
 
 /datum/antagonist/rev/remove_innate_effects(mob/living/mob_override)
@@ -73,6 +74,8 @@
 
 /datum/antagonist/rev/on_removal()
 	remove_objectives()
+	var/mob/living/M = owner.current
+	M.remove_status_effect(/datum/status_effect/agent_pinpointer/hunt_command)
 	. = ..()
 
 /datum/antagonist/rev/greet()
@@ -733,6 +736,36 @@
 	gloves = /obj/item/clothing/gloves/color/black
 	l_hand = /obj/item/spear
 	r_hand = /obj/item/assembly/flash
+
+//MONKE
+/atom/movable/screen/alert/status_effect/agent_pinpointer/hunt_command
+	name = "Hunt Command"
+	desc = "You have an odd sense where command is."
+
+
+/datum/status_effect/agent_pinpointer/hunt_command
+	id = "agent_pinpointer"
+	alert_type = /atom/movable/screen/alert/status_effect/agent_pinpointer/hunt_command
+	//minimum_range = HUNTER_MINIMUM_RANGE
+	//tick_interval = HUNTER_PING_TIME
+	//duration = STATUS_EFFECT_PERMANENT
+	//range_fuzz_factor = HUNTER_FUZZ_FACTOR
+
+///Attempting to locate a nearby target to scan and point towards.
+/datum/status_effect/agent_pinpointer/hunt_command/scan_for_target()
+
+	scan_target = null
+	if(!owner && !owner.mind)
+		return
+	var/dist = 1000
+	var/mob/living/command
+	for(var/mob/living/located as anything in SSjob.get_all_heads())
+		if(get_dist(owner, located) < dist && considered_alive(located.mind))
+			dist = get_dist(owner, located)
+			command = located
+	if(QDELETED(command))
+		return
+	scan_target = command
 
 #undef DECONVERTER_REVS_WIN
 #undef DECONVERTER_STATION_WIN
