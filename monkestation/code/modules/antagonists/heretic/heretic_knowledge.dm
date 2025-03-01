@@ -4,15 +4,13 @@
 	// there's literally a big unique announcement saying "HEY THIS PERSON'S AN ASCENDED HERETIC", no reason to not have them in the orbit menu
 	heretic_datum.show_to_ghosts = TRUE
 	heretic_datum.antagpanel_category = "Ascended Heretics"
-	var/static/have_set_lambda = FALSE
-	if(!have_set_lambda)
-		var/ascended_heretics = 1
-		for(var/datum/antagonist/heretic/heretic in GLOB.antagonists)
+
+	for(var/datum/antagonist/heretic/heretic in GLOB.antagonists) //Only one heretic is allowed to ascend.
+		if(!heretic.ascended || !heretic.feast_of_owls)
 			var/mob/living/heretic_body = heretic.owner?.current
-			if(QDELETED(heretic_body) || heretic_body == user || !heretic.ascended || heretic_body.stat == DEAD)
-				continue
-			ascended_heretics++
-		if(ascended_heretics >= 3)
-			have_set_lambda = TRUE
-			message_admins("Alert level automatically being raised to Lambda in 5 seconds due to the presence of three or more living ascended heretics")
-			addtimer(CALLBACK(SSsecurity_level, TYPE_PROC_REF(/datum/controller/subsystem/security_level, set_level), SEC_LEVEL_LAMBDA), 5 SECONDS, TIMER_UNIQUE)
+			heretic_body.gib()
+			return
+		
+		if(heretic.feast_of_owls)
+			to_chat(heretic_body, span_warning("Selling your ambition to the owls has saved you from the wrath of the mansus."))
+			return
