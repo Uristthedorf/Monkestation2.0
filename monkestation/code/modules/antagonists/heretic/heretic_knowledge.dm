@@ -6,8 +6,8 @@
 	heretic_datum.antagpanel_category = "Ascended Heretics"
 
 	for(var/datum/antagonist/heretic/heretic in GLOB.antagonists) //Only one heretic is allowed to ascend.
+		var/mob/living/heretic_body = heretic.owner?.current
 		if(!heretic.ascended || !heretic.feast_of_owls)
-			var/mob/living/heretic_body = heretic.owner?.current
 			heretic_body.gib()
 			return
 		
