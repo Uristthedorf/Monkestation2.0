@@ -421,6 +421,8 @@
 	for(var/fl in unattached_flesh)
 		qdel(fl)
 	unattached_flesh.Cut()
+	
+	occupant.sec_hud_set_security_status()
 
 	occupant = null
 
