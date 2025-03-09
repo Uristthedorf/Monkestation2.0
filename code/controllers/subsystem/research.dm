@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(research)
 	var/list/techweb_nodes_experimental = list()
 	///path = list(point type = value)
 	var/list/techweb_point_items = list(
-	/obj/item/assembly/signaler/anomaly = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
+	/obj/item/assembly/signaler/anomaly = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_5_POINTS)
 	)
 	var/list/errored_datums = list()
 	var/list/point_types = list() //typecache style type = TRUE list
@@ -117,6 +117,13 @@ SUBSYSTEM_DEF(research)
 			techweb_list.add_point_list(bitcoins)
 
 		techweb_list.last_income = world.time
+
+		if(techweb_list.research_queue_nodes.len)
+				techweb_list.research_node_id(techweb_list.research_queue_nodes[1]) // Attempt to research the first node in queue if possible
+
+				for(var/datum/techweb_node/node as anything in techweb_list.research_queue_nodes)
+					if(node.is_free(techweb_list)) // Automatically research all free nodes in queue if any
+						techweb_list.research_node(node)
 
 	for(var/core_type in slime_core_prices)
 		var/obj/item/slime_extract/core = core_type
