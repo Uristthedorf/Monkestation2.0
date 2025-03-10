@@ -152,7 +152,7 @@ export const TechwebContent = (props) => {
     t_disk,
     d_disk,
     locked,
-	queue_nodes = [],
+    queue_nodes = [],
     node_cache,
   } = data;
   const [techwebRoute, setTechwebRoute] = useLocalState('techwebRoute', null);
