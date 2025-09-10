@@ -56,7 +56,7 @@
 		created_mob.AddComponent(/datum/component/basic_inhands, y_offset = -6)
 		created_mob.AddComponent(/datum/component/max_held_weight, WEIGHT_CLASS_SMALL)
 		created_mob.AddElement(/datum/element/dextrous)
-	created_mob.add_traits(list(TRAIT_MUTE, TRAIT_GHOST_CRITTER), INNATE_TRAIT)
+	created_mob.add_traits(list(TRAIT_MUTE, TRAIT_GHOST_CRITTER, TRAIT_PULL_BLOCKED), INNATE_TRAIT)
 
 	init_verbs()
 
