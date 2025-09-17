@@ -37,7 +37,6 @@
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
-	special_design_flags = BLUE_ALERT_DESIGN
 
 /datum/design/security_flashset
 	name = "Integrated High-intensity Photon Projector"
@@ -51,4 +50,4 @@
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
-	special_design_flags = BLUE_ALERT_DESIGN
+	special_design_flags = WHITELISTED_DESIGN
