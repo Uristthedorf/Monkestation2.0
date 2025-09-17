@@ -27,7 +27,7 @@
 
 /datum/design/security_taserset
 	name = "Arm-mounted Taser Arm Implant"
-	desc =  "A powerful cybernetic implant that engrains a advanced taser into the user's arm."
+	desc =  "A powerful cybernetic implant that engrains an advanced taser into the user's arm."
 	id = "ci-set-taser"
 	build_type = PROTOLATHE | MECHFAB
 	construction_time = 3 SECONDS
