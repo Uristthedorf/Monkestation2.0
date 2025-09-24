@@ -57,8 +57,8 @@
 	var/mob/living/carbon/human/clonee = new /mob/living/carbon/human(src)
 
 	dna.copy_dna(clonee.dna, COPY_DNA_SE|COPY_DNA_SPECIES|COPY_DNA_MUTATIONS)
-	clonee.updateappearance(mutcolor_update = TRUE, mutations_overlay_update = TRUE)
 	clonee.domutcheck()
+	clonee.updateappearance(mutcolor_update = TRUE, mutations_overlay_update = TRUE)
 
 	clonee.underwear = underwear
 	clonee.undershirt = undershirt
