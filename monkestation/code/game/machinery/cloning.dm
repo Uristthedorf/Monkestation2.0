@@ -136,7 +136,7 @@
 	return examine(user)
 
 //Start growing a human clone in the pod!
-/obj/machinery/clonepod/proc/growclone(clonename, datum/dna/dna, mindref, factions, list/quirks, datum/bank_account/insurance, list/traumas, empty)
+/obj/machinery/clonepod/proc/growclone(clonename, underwear, undershirt, socks, datum/dna/dna, mindref, factions, list/quirks, datum/bank_account/insurance, list/traumas, empty)
 	if(panel_open)
 		return NONE
 	if(mess || attempting)
@@ -165,9 +165,13 @@
 
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src)
 
-	dna.copy_dna(H.dna, COPY_DNA_SE|COPY_DNA_SPECIES)
+	dna.copy_dna(H.dna, COPY_DNA_SE|COPY_DNA_SPECIES|COPY_DNA_MUTATIONS)
 	H.updateappearance(mutcolor_update=1)
 	H.domutcheck()
+
+	H.underwear = underwear // Clones all have the same underwear, to make them more identical.
+	H.undershirt = undershirt
+	H.socks = socks
 
 	if(!HAS_TRAIT(H, TRAIT_RADIMMUNE))//dont apply mutations if the species is Mutation proof.
 		if(efficiency > 2)

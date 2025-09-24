@@ -46,7 +46,7 @@
 		speed_coeff += 1 // I still want basic parts to have base 100% speed.
 
 //Start growing a human clone in the pod!
-/obj/machinery/clonepod/experimental/growclone(clonename, dna, mindref, factions, list/quirks)
+/obj/machinery/clonepod/experimental/growclone(clonename, underwear, undershirt, socks, datum/dna/dna, mindref, factions, list/quirks)
 	if(panel_open || mess || attempting)
 		return NONE
 
@@ -59,6 +59,10 @@
 	dna.copy_dna(clonee.dna, COPY_DNA_SE|COPY_DNA_SPECIES)
 	clonee.updateappearance(mutcolor_update=1)
 	clonee.domutcheck()
+
+	clonee.underwear = underwear
+	clonee.undershirt = undershirt
+	clonee.socks = socks
 
 	if(efficiency > 2)
 		var/list/unclean_mutations = (GLOB.not_good_mutations|GLOB.bad_mutations)

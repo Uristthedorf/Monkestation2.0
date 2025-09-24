@@ -72,7 +72,7 @@
 				. = pod
 
 /proc/grow_clone_from_record(obj/machinery/clonepod/pod, datum/data/record/R, empty)
-	return pod.growclone(R.fields["name"], R.fields["DNA"], R.fields["mindref"], R.fields["factions"], R.fields["quirks"], R.fields["bank_account"], R.fields["traumas"], empty)
+	return pod.growclone(R.fields["name"], R.fields["underwear"], R.fields["undershirt"], R.fields["socks"], R.fields["DNA"], R.fields["mindref"], R.fields["factions"], R.fields["quirks"], R.fields["bank_account"], R.fields["traumas"], empty)
 
 /obj/machinery/computer/cloning/process()
 	if(!(scanner && LAZYLEN(pods) && autoprocess))
@@ -538,7 +538,6 @@
 			scantemp = "<font class='bad'>Unable to locate valid genetic data.</font>"
 			playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 			return
-
 	if(isbrain(mob_occupant))
 		dna = B.stored_dna
 	if((mob_occupant.mob_biotypes & MOB_ROBOTIC) || (dna?.species?.inherent_biotypes & MOB_ROBOTIC))
@@ -585,8 +584,15 @@
 	R.fields["traumas"] = list()
 	if(ishuman(mob_occupant))
 		R.fields["traumas"] = C.get_traumas()
+		var/mob/living/carbon/human/D = C
+		R.fields["underwear"] = D.underwear
+		R.fields["undershirt"] = D.undershirt
+		R.fields["socks"] = D.socks
 	if(isbrain(mob_occupant))
 		R.fields["traumas"] = B.get_traumas()
+		R.fields["underwear"] = /datum/sprite_accessory/underwear/male_briefs
+		R.fields["undershirt"] = /datum/sprite_accessory/undershirt/shirt_grey
+		R.fields["socks"] = /datum/sprite_accessory/socks/white_knee
 
 	R.fields["bank_account"] = has_bank_account
 	R.fields["mindref"] = "[REF(mob_occupant.mind)]"
