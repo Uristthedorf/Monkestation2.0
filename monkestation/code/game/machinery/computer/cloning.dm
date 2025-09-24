@@ -72,7 +72,7 @@
 				. = pod
 
 /proc/grow_clone_from_record(obj/machinery/clonepod/pod, datum/data/record/R, empty)
-	return pod.growclone(R.fields["name"], R.fields["UI"], R.fields["SE"], R.fields["mindref"], R.fields["blood_type"], R.fields["mrace"], R.fields["features"], R.fields["factions"], R.fields["quirks"], R.fields["bank_account"], R.fields["traumas"], empty)
+	return pod.growclone(R.fields["name"], R.fields["DNA"], R.fields["mindref"], R.fields["factions"], R.fields["quirks"], R.fields["bank_account"], R.fields["traumas"], empty)
 
 /obj/machinery/computer/cloning/process()
 	if(!(scanner && LAZYLEN(pods) && autoprocess))
@@ -571,23 +571,10 @@
 			playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 			return
 	var/datum/data/record/R = new()
-	if(dna.species)
-		// We store the instance rather than the path, because some
-		// species (abductors, slimepeople) store state in their
-		// species datums
-		dna.delete_species = FALSE
-		R.fields["mrace"] = dna.species
-	else
-		var/datum/species/rando_race = pick(GLOB.roundstart_races)
-		R.fields["mrace"] = rando_race.type
 
 	R.fields["name"] = mob_occupant.real_name
 	R.fields["id"] = copytext_char(md5(mob_occupant.real_name), 2, 6)
-	R.fields["UE"] = dna.unique_enzymes
-	R.fields["UI"] = dna.unique_identity
-	R.fields["SE"] = dna.mutation_index
-	R.fields["blood_type"] = dna.human_blood_type
-	R.fields["features"] = dna.features
+	R.fields["DNA"] = dna
 	R.fields["factions"] = mob_occupant.faction
 	R.fields["quirks"] = list()
 	for(var/datum/quirk/quirk as anything in mob_occupant.quirks)
