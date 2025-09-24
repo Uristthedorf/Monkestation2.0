@@ -166,7 +166,7 @@
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src)
 
 	dna.copy_dna(H.dna, COPY_DNA_SE|COPY_DNA_SPECIES|COPY_DNA_MUTATIONS)
-	H.updateappearance(mutcolor_update=1)
+	H.updateappearance(mutcolor_update = TRUE, mutations_overlay_update = TRUE)
 	H.domutcheck()
 
 	H.underwear = underwear // Clones all have the same underwear, to make them more identical.
