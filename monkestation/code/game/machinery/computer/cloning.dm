@@ -72,7 +72,7 @@
 				. = pod
 
 /proc/grow_clone_from_record(obj/machinery/clonepod/pod, datum/data/record/R, empty)
-	return pod.growclone(R.fields["name"], R.fields["underwear"], R.fields["undershirt"], R.fields["socks"], R.fields["DNA"], R.fields["mindref"], R.fields["factions"], R.fields["quirks"], R.fields["bank_account"], R.fields["traumas"], empty)
+	return pod.growclone(R.fields["name"], R.fields["mutations"], R.fields["underwear"], R.fields["undershirt"], R.fields["socks"], R.fields["DNA"], R.fields["mindref"], R.fields["factions"], R.fields["quirks"], R.fields["bank_account"], R.fields["traumas"], empty)
 
 /obj/machinery/computer/cloning/process()
 	if(!(scanner && LAZYLEN(pods) && autoprocess))
@@ -522,7 +522,8 @@
 	var/mob/living/mob_occupant = get_mob_or_brainmob(occupant)
 	if(QDELETED(mob_occupant))
 		return
-	var/datum/dna/dna
+	var/datum/dna/copied_dna = new()
+	var/datum/dna/old_dna
 	var/datum/bank_account/has_bank_account
 
 	// Do not use unless you know what they are.
@@ -530,17 +531,17 @@
 	var/mob/living/brain/B = mob_occupant
 
 	if(ishuman(mob_occupant))
-		dna = C.has_dna()
+		old_dna = C.has_dna()
 		var/obj/item/card/id/I = C.get_idcard(TRUE)
 		if(I)
 			has_bank_account = I.registered_account
-		if(!istype(dna) || HAS_TRAIT(mob_occupant, TRAIT_NO_DNA_COPY))
+		if(!istype(old_dna) || HAS_TRAIT(mob_occupant, TRAIT_NO_DNA_COPY))
 			scantemp = "<font class='bad'>Unable to locate valid genetic data.</font>"
 			playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 			return
 	if(isbrain(mob_occupant))
-		dna = B.stored_dna
-	if((mob_occupant.mob_biotypes & MOB_ROBOTIC) || (dna?.species?.inherent_biotypes & MOB_ROBOTIC))
+		old_dna = B.stored_dna
+	if((mob_occupant.mob_biotypes & MOB_ROBOTIC) || (old_dna?.species?.inherent_biotypes & MOB_ROBOTIC))
 		scantemp = "<font class='bad'>Unable to locate valid genetic data.</font>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 		return
@@ -570,10 +571,20 @@
 			playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 			return
 	var/datum/data/record/R = new()
+	old_dna.copy_dna(copied_dna, COPY_DNA_SE|COPY_DNA_SPECIES)
+
+	R.fields["mutations"] = list()
+	for(var/datum/mutation/mutation in old_dna.mutations)
+		var/list/valid_sources = mutation.sources & GLOB.standard_mutation_sources
+		if(!length(valid_sources))
+			continue
+		var/datum/mutation/added_mutation = mutation.make_copy()
+		added_mutation.sources = valid_sources.Copy()
+		R.fields["mutations"] += added_mutation
 
 	R.fields["name"] = mob_occupant.real_name
 	R.fields["id"] = copytext_char(md5(mob_occupant.real_name), 2, 6)
-	R.fields["DNA"] = dna
+	R.fields["DNA"] = copied_dna
 	R.fields["factions"] = mob_occupant.faction
 	R.fields["quirks"] = list()
 	for(var/datum/quirk/quirk as anything in mob_occupant.quirks)
@@ -600,8 +611,8 @@
 
 	var/datum/data/record/old_record = find_record_old("mindref", REF(mob_occupant.mind), records)
 	if(body_only)
-		old_record = find_record_old("UE", dna.unique_enzymes, records) //Body-only records cannot be identified by mind, so we use the DNA
-		if(old_record && ((old_record.fields["UI"] != dna.unique_identity) || (!old_record.fields["body_only"]))) //Never overwrite a mind-and-body record if it exists
+		old_record = find_record_old("UE", copied_dna.unique_enzymes, records) //Body-only records cannot be identified by mind, so we use the DNA
+		if(old_record && ((old_record.fields["UI"] != copied_dna.unique_identity) || (!old_record.fields["body_only"]))) //Never overwrite a mind-and-body record if it exists
 			old_record = null
 	if(old_record)
 		records -= old_record
@@ -611,4 +622,3 @@
 	records += R
 	log_cloning("[M ? key_name(M) : "Autoprocess"] added the [body_only ? "body-only " : ""]record of [key_name(mob_occupant)] to [src] at [AREACOORD(src)].")
 	playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50)
-

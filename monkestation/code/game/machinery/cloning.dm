@@ -136,7 +136,7 @@
 	return examine(user)
 
 //Start growing a human clone in the pod!
-/obj/machinery/clonepod/proc/growclone(clonename, underwear, undershirt, socks, datum/dna/dna, mindref, factions, list/quirks, datum/bank_account/insurance, list/traumas, empty)
+/obj/machinery/clonepod/proc/growclone(clonename, mutations, underwear, undershirt, socks, datum/dna/dna, mindref, factions, list/quirks, datum/bank_account/insurance, list/traumas, empty)
 	if(panel_open)
 		return NONE
 	if(mess || attempting)
@@ -165,7 +165,14 @@
 
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src)
 
-	dna.copy_dna(H.dna, COPY_DNA_SE|COPY_DNA_SPECIES|COPY_DNA_MUTATIONS)
+	dna.copy_dna(H.dna, COPY_DNA_SE|COPY_DNA_SPECIES)
+
+	for(var/datum/mutation/mutation in mutations)
+		var/list/valid_sources = mutation.sources & GLOB.standard_mutation_sources
+		if(!length(valid_sources))
+			continue
+		H.dna.add_mutation(mutation, valid_sources)
+
 	H.domutcheck()
 	H.updateappearance(mutcolor_update = TRUE, mutations_overlay_update = TRUE)
 
@@ -174,9 +181,6 @@
 	H.socks = socks
 
 	if(!HAS_TRAIT(H, TRAIT_RADIMMUNE))//dont apply mutations if the species is Mutation proof.
-		if(efficiency > 2)
-			var/list/unclean_mutations = (GLOB.not_good_mutations|GLOB.bad_mutations)
-			H.dna.remove_mutation_group(unclean_mutations)
 		if(efficiency > 5 && prob(20))
 			H.easy_random_mutate(POSITIVE)
 		if(efficiency < 3 && prob(50))
