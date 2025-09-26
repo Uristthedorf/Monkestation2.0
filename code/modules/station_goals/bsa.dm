@@ -405,7 +405,7 @@
 	return ..()
 
 /obj/machinery/computer/bsa_control/multitool_act(mob/living/user, obj/item/multitool/M)
-	if(!do_after(user, 5 SECONDS, src))
+	if(!do_after(user, 1 SECONDS, src))
 		return ITEM_INTERACT_SUCCESS
 	if(!rigged_to_blow)
 		balloon_alert(user, "rigged to explode")
