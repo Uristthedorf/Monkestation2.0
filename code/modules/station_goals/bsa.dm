@@ -269,7 +269,9 @@
 	icon_keyboard = null
 	icon_screen = null
 
+	/// Is the BSA unlocked?
 	var/bsa_unlock = FALSE
+	/// Will the BSA target itself when it's fired?
 	var/rigged_to_blow = FALSE
 	var/datum/weakref/cannon_ref
 	var/notice
@@ -405,7 +407,7 @@
 	return ..()
 
 /obj/machinery/computer/bsa_control/multitool_act(mob/living/user, obj/item/multitool/M)
-	if(!do_after(user, 1 SECONDS, src))
+	if(!do_after(user, 5 SECONDS, src))
 		return ITEM_INTERACT_SUCCESS
 	if(!rigged_to_blow)
 		balloon_alert(user, "rigged to explode")
@@ -416,6 +418,10 @@
 		to_chat(user, span_warning("You pulse [src] and restore the focusing crystal. It appears someone had rigged the BSA to explode..."))
 		rigged_to_blow = FALSE
 	return ITEM_INTERACT_SUCCESS
+
+/obj/machinery/computer/bsa_control/emp_act(severity)
+	. = ..()
+	rigged_to_blow = TRUE	//EMPs will make the BSA fire on itself if you don't check with multitool.
 
 /obj/machinery/computer/bsa_control/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
