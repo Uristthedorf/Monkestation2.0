@@ -364,11 +364,15 @@
 
 /obj/machinery/computer/bsa_control/proc/fire(mob/user)
 	var/obj/machinery/bsa/full/cannon = cannon_ref?.resolve()
+	var/datum/component/gps/G = target
 	if(!cannon)
 		notice = "No Cannon Exists!"
 		return
 	if(cannon.machine_stat)
 		notice = "Cannon unpowered!"
+		return
+	if(QDELETED(G.parent) && !rigged_to_blow) // Makes sure the signal isn't deleted. If rigged to blow, will still blow up the BSA.
+		notice = "Target does not exist! Select a new target!"
 		return
 	notice = null
 	var/turf/target_turf = get_impact_turf()
