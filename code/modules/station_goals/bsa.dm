@@ -402,7 +402,7 @@
 			else
 				bsa_unlock = FALSE
 				to_chat(user, span_notice("[src] firing protocols have been locked."))
-			update_static_data(user)
+			update_static_data_for_all_viewers()
 		return
 	return ..()
 
