@@ -387,14 +387,14 @@
 	qdel(centerpiece)
 	return cannon
 
-/obj/machinery/computer/bsa_control/attackby(obj/item/object, mob/living/user, params)
-	var/obj/item/card/id/card = object.GetID()
+/obj/machinery/computer/bsa_control/item_interaction(mob/living/user, obj/item/tool,  list/modifiers)
+	var/obj/item/card/id/card = tool.GetID()
 	if(card)
 		if(obj_flags & EMAGGED)
 			to_chat(user, span_warning("The authentification slot spits sparks at you and the display reads scrambled text!"))
 			do_sparks(1, FALSE, src)
 			bsa_unlock = TRUE // just in case it wasn't already for some reason. keycard reader is busted.
-			return
+			return ITEM_INTERACT_SUCCESS
 		if((ACCESS_COMMAND in card.access))
 			if(!bsa_unlock)
 				bsa_unlock = TRUE
@@ -403,8 +403,8 @@
 				bsa_unlock = FALSE
 				to_chat(user, span_notice("[src] firing protocols have been locked."))
 			update_static_data(user)
-		return
-	return ..()
+			return ITEM_INTERACT_SUCCESS
+	return NONE
 
 /obj/machinery/computer/bsa_control/multitool_act(mob/living/user, obj/item/multitool/M)
 	if(!do_after(user, 5 SECONDS, src))
