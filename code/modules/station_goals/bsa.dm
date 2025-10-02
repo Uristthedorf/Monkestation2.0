@@ -407,7 +407,7 @@
 		if((ACCESS_COMMAND in card.access))
 			if(!bsa_unlock)
 				bsa_unlock = TRUE
-				to_chat(user, span_notice("[src] firing protocols have been unlocked."))	//I coped this function from mechfab code, probably code use rewording.
+				to_chat(user, span_notice("[src] firing protocols have been unlocked."))	//I copied this function from mechfab code, maybe could use rewording.
 				user.log_message("has unlocked [src].", LOG_GAME)
 			else
 				bsa_unlock = FALSE
