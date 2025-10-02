@@ -408,9 +408,11 @@
 			if(!bsa_unlock)
 				bsa_unlock = TRUE
 				to_chat(user, span_notice("[src] firing protocols have been unlocked."))	//I coped this function from mechfab code, probably code use rewording.
+				user.log_message("has unlocked [src].", LOG_GAME)
 			else
 				bsa_unlock = FALSE
 				to_chat(user, span_notice("[src] firing protocols have been locked."))
+				user.log_message("has locked [src].", LOG_GAME)
 			update_static_data_for_all_viewers()
 			return ITEM_INTERACT_SUCCESS
 	return NONE
@@ -421,16 +423,19 @@
 	if(!rigged_to_blow)
 		balloon_alert(user, "rigged to explode")
 		to_chat(user, span_warning("You pulse [src] and hear the focusing crystal short out. You get the feeling it wouldn't be wise to stand near [src] when the BSA fires..."))
+		user.log_message("has rigged [src] to detonate itself.", LOG_GAME)
 		rigged_to_blow = TRUE
 	else
 		balloon_alert(user, "safeties restored")
 		to_chat(user, span_warning("You pulse [src] and restore the focusing crystal. It appears someone had rigged the BSA to explode..."))
+		user.log_message("has restored the safeties of [src].", LOG_GAME)
 		rigged_to_blow = FALSE
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/computer/bsa_control/emp_act(severity)
 	. = ..()
 	rigged_to_blow = TRUE	//EMPs will make the BSA fire on itself if you don't check with multitool.
+	log_game("An EMP has rigged [src] to detonate itself.")
 
 /obj/machinery/computer/bsa_control/emag_act(mob/user, obj/item/card/emag/emag_card)
 	if(obj_flags & EMAGGED)
@@ -438,5 +443,6 @@
 	obj_flags |= EMAGGED
 	bsa_unlock = TRUE
 	balloon_alert(user, "unlocked")
-	to_chat(user, span_warning("You emag [src] and hear the focusing crystal short out. You get the feeling it wouldn't be wise to stand near [src] when the BSA fires..."))
+	to_chat(user, span_warning("You emag [src] bypass the authentication lock."))
+	user.log_message("has unlocked [src] with an emag.", LOG_GAME)
 	return TRUE
