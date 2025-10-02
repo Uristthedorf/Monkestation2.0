@@ -133,6 +133,8 @@
 	var/ex_power = 3
 	var/power_used_per_shot = 2000000 //enough to kil standard apc - todo : make this use wires instead and scale explosion power with it
 	var/ready
+	/// How long the beam is. Is actually 6 tiles less than what is put here since we count from the center of the BSA.
+	var/beam_length = 26 //Enough to cover an entire screen.
 	pixel_y = -32
 	pixel_x = -192
 	bound_width = 352
@@ -159,11 +161,15 @@
 	return get_turf(src)
 
 /obj/machinery/bsa/full/proc/get_target_turf()
+	/// The x value of where the beam will end up at.
+	var/x_value
 	switch(dir)
 		if(WEST)
-			return locate(1,y,z)
+			x_value = max(1,x - beam_length)
+			return locate(x_value,y,z)
 		if(EAST)
-			return locate(world.maxx,y,z)
+			x_value = min(world.maxx, x + beam_length)
+			return locate(x_value,y,z)
 	return get_turf(src)
 
 /obj/machinery/bsa/full/Initialize(mapload, cannon_direction = WEST)
@@ -218,7 +224,7 @@
 			break
 		else
 			SSexplosions.highturf += tile //also fucks everything else on the turf
-	point.Beam(target, icon_state = "bsa_beam", time = 5 SECONDS, maxdistance = world.maxx) //ZZZAP
+	point.Beam(target, icon_state = "bsa_beam", time = 5 SECONDS, maxdistance = beam_length) //ZZZAP
 	new /obj/effect/temp_visual/bsa_splash(point, dir)
 
 	notify_ghosts(
