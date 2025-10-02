@@ -209,6 +209,9 @@
 	var/turf/point = get_front_turf()
 	var/turf/target = get_target_turf()
 	var/atom/movable/blocker
+
+	for(var/mob/living/mob in point) //The tile next to the cannon will not destroy turfs/objects, (so you can put a holobarrier) but WILL gib everyone on that tile.
+		mob.gib()
 	for(var/T in get_line(get_step(point, dir), target))
 		var/turf/tile = T
 		if(SEND_SIGNAL(tile, COMSIG_ATOM_BSA_BEAM) & COMSIG_ATOM_BLOCKS_BSA_BEAM)
