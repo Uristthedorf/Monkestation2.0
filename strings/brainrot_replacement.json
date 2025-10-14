@@ -31,7 +31,7 @@
 		"lie": "cap",
 		"girls": "huzz",
 		"women": "huzz",
-		"guys": "gyats"
+		"guys": "gyats",
 		"good job": "slay",
 		"cyborg": ["clanker", "clanka", "wireback"],
 		"borg": ["clanker", "clanka", "wireback"],
@@ -49,7 +49,6 @@
 		"assistant": "sigma",
 		"botanist": "plant rizzler",
 		"chef": "",
-		"cook": "",
 		"bartender": "",
 		"janitor": "jannie",
 		"quartermaster": "crate lord",
@@ -77,6 +76,8 @@
 		"geneticist": "looksmaxxer",
 		"": "",
 
+		"enemy": "op",
+		"enemies": "ops",
 		"hot": "spicy",
 		"nuke": "zaza bomb",
 		"plasma": "zaza",
