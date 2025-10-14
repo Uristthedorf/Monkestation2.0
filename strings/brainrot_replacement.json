@@ -10,6 +10,7 @@
 		"good": "bussin",
 		"cursed": "cooked",
 		"doomed": "cooked",
+		"what?": "erm, what the sigma?",
 		"stupid": "goofy ah",
 		"silly": "goofy ah",
 		"traitor": ["sussy baka", "imposter"],
@@ -64,6 +65,7 @@
 		"officer": "",
 		"detective": "",
 		"engineer": "",
+		"air": "zaza",
 		"atmos": ["fart", "zaza"],
 		"atmosphere": "rizzosphere",
 		"atmospheric": "rizzopheric",
@@ -74,6 +76,7 @@
 		"geneticist": "looksmaxxer",
 		"": "",
 
+		"hot": "spicy",
 		"nuke": "zaza bomb",
 		"plasma": "zaza"
 
