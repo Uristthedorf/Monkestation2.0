@@ -92,12 +92,14 @@
 
 /obj/effect/anomaly/proc/anomalyNeutralize()
 	new /obj/effect/particle_effect/fluid/smoke/bad(loc)
-
 	if(!isnull(anomaly_core))
 		var/anomaly_type = anomaly_core.type
-		SSresearch.increment_existing_anomaly_cores(anomaly_type)
-		anomaly_core.forceMove(drop_location())
-		anomaly_core = null
+		if(anomaly_core.type != /obj/item/assembly/signaler/anomaly)
+			SSresearch.increment_existing_anomaly_cores(anomaly_type)
+			anomaly_core.forceMove(drop_location())
+			anomaly_core = null
+		else
+			new /obj/item/inert_anomaly(drop_location())
 
 	// else, anomaly core gets deleted by qdel(src).
 
