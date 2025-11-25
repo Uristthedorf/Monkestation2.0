@@ -1,0 +1,13 @@
+"a" = (/turf/closed/indestructible/riveted,/area/space)
+"q" = (/obj/machinery/wish_granter,/turf/open/floor/plating/airless,/area/space)
+"V" = (/turf/template_noop,/area/space)
+
+(1,1,1) = {"
+VVVVVVV
+VaaaaaV
+VaaaaaV
+VaaqaaV
+VaaaaaV
+VaaaaaV
+VVVVVVV
+"}
