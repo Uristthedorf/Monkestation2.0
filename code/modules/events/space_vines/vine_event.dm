@@ -33,7 +33,7 @@
 	var/production
 
 /datum/round_event/spacevine/start()
-	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
+	var/list/turfs = list() //list of all the empty floor turfs in the maintenance areas
 
 
 	if(override_turf)
@@ -41,7 +41,7 @@
 	else
 		var/obj/structure/spacevine/vine = new()
 
-		for(var/area/station/hallway/area in GLOB.areas)
+		for(var/area/station/maintenance/area in GLOB.areas)
 			for(var/turf/open/floor in area.get_turfs_from_all_zlevels())
 				if(floor.Enter(vine))
 					turfs += floor
