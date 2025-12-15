@@ -185,6 +185,11 @@
 		return
 	tangle_ability.Trigger(target = victim)
 
+/mob/living/basic/venus_human_trap/mob_negates_gravity()
+	if(locate(/obj/structure/spacevine) in loc)
+		return TRUE
+	return ..()
+
 /mob/living/basic/venus_human_trap/Life(seconds_per_tick = SSMOBS_DT, times_fired)
 	. = ..()
 
