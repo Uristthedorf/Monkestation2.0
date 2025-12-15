@@ -190,7 +190,7 @@
 						if(!istype(D, /obj/machinery/door/airlock/external))
 							var/obj/machinery/door/airlock/A = D
 							playsound(src, 'sound/machines/airlock_alien_prying.ogg', 100, 1)
-							sleep(60)
+							sleep(6 SECONDS)
 							A.open(2)
 							for(var/datum/spacevine_mutation/SM in mutations)
 								SM.on_spread(src, stepturf)
@@ -198,13 +198,12 @@
 							if(master)
 								master.spawn_spacevine_piece(stepturf, src)
 					else
-						if(!istype(D, /obj/machinery/door/firedoor))
-							D.open()
-							for(var/datum/spacevine_mutation/SM in mutations)
-								SM.on_spread(src, stepturf)
-								stepturf = get_step(src,direction)
-							if(master)
-								master.spawn_spacevine_piece(stepturf, src)
+						D.open()
+						for(var/datum/spacevine_mutation/SM in mutations)
+							SM.on_spread(src, stepturf)
+							stepturf = get_step(src,direction)
+						if(master)
+							master.spawn_spacevine_piece(stepturf, src)
 
 /// Destroying an explosive vine sets off a chain reaction
 /obj/structure/spacevine/ex_act(severity, target)
