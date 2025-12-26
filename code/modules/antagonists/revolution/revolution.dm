@@ -773,13 +773,13 @@
 	scan_target = target
 
 /datum/antagonist/rev/proc/determine_pointer_add(mob/living/revolter)
-	if job_rank == ROLE_REV	// Regular revs know where the closer leader is.
+	if (job_rank == ROLE_REV)	// Regular revs know where the closer leader is.
 		revolter.apply_status_effect(/datum/status_effect/agent_pinpointer/hunt_rev_head)
 	else					// Rev heads know where command is.
 		revolter.apply_status_effect(/datum/status_effect/agent_pinpointer/hunt_command)
 
 /datum/antagonist/rev/proc/determine_pointer_remove(mob/living/revolter)
-	if job_rank == ROLE_REV	// Regular revs know where the closer leader is.
+	if (job_rank == ROLE_REV)	// Regular revs know where the closer leader is.
 		revolter.remove_status_effect(/datum/status_effect/agent_pinpointer/hunt_rev_head)
 	else					// Rev heads know where command is.
 		revolter.remove_status_effect(/datum/status_effect/agent_pinpointer/hunt_command)
@@ -789,7 +789,7 @@
 	name = "Locate Revolution Leader"
 	desc = "You have an odd sense where your commander is."
 
-/datum/status_effect/agent_pinpointer/hunt_head
+/datum/status_effect/agent_pinpointer/hunt_rev_head
 	id = "agent_pinpointer"
 	alert_type = /atom/movable/screen/alert/status_effect/agent_pinpointer/hunt_command
 	minimum_range = 1
@@ -798,7 +798,7 @@
 	//range_fuzz_factor = HUNTER_FUZZ_FACTOR
 
 ///Attempting to locate a nearby target to scan and point towards.
-/datum/status_effect/agent_pinpointer/hunt_head/scan_for_target()
+/datum/status_effect/agent_pinpointer/hunt_rev_head/scan_for_target()
 
 	scan_target = null
 	if(!owner && !owner.mind)

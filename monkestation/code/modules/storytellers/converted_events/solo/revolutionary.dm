@@ -39,7 +39,7 @@
 	min_players = 35
 	roundstart = TRUE
 	earliest_start = 0 SECONDS
-	weight = = 5 //Return of the king
+	weight = 5 //Return of the king
 	max_occurrences = 1
 	event_icon_state = "revolution"
 
