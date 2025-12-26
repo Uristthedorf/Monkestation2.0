@@ -771,6 +771,10 @@
 		return
 	scan_target = target
 
+/datum/antagonist/rev/proc/determine_pointer()
+	if job_rank == ROLE_REV
+	else
+
 /atom/movable/screen/alert/status_effect/agent_pinpointer/hunt_head
 	name = "Hunt Revolution Leader"
 	desc = "You have an odd sense where your commander is."
