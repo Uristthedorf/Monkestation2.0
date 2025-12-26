@@ -54,7 +54,7 @@
 /datum/antagonist/rev/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/M = mob_override || owner.current
 	handle_clown_mutation(M, mob_override ? null : "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself.")
-	M.apply_status_effect(/datum/status_effect/agent_pinpointer/hunt_command)
+	M.apply_status_effect(/datum/status_effect/agent_pinpointer/hunt_leader)
 	add_team_hud(M, /datum/antagonist/rev)
 
 /datum/antagonist/rev/remove_innate_effects(mob/living/mob_override)
@@ -762,6 +762,37 @@
 	var/mob/living/body
 	var/mob/living/target
 	var/list/heads_list = SSjob.get_all_heads()
+	for(var/datum/mind/command_mind as anything in heads_list)
+		body = command_mind.current
+		if(get_dist(owner, body) < dist && considered_alive(command_mind))
+			dist = get_dist(owner, body)
+			target = body
+	if(QDELETED(body))
+		return
+	scan_target = target
+
+/atom/movable/screen/alert/status_effect/agent_pinpointer/hunt_head
+	name = "Hunt Revolution Leader"
+	desc = "You have an odd sense where your commander is."
+
+/datum/status_effect/agent_pinpointer/hunt_head
+	id = "agent_pinpointer"
+	alert_type = /atom/movable/screen/alert/status_effect/agent_pinpointer/hunt_command
+	minimum_range = 1
+	//tick_interval = HUNTER_PING_TIME
+	//duration = STATUS_EFFECT_PERMANENT
+	//range_fuzz_factor = HUNTER_FUZZ_FACTOR
+
+///Attempting to locate a nearby target to scan and point towards.
+/datum/status_effect/agent_pinpointer/hunt_head/scan_for_target()
+
+	scan_target = null
+	if(!owner && !owner.mind)
+		return
+	var/dist = 1000
+	var/mob/living/body
+	var/mob/living/target
+	var/list/heads_list = get_antag_minds(/datum/antagonist/rev/head)
 	for(var/datum/mind/command_mind as anything in heads_list)
 		body = command_mind.current
 		if(get_dist(owner, body) < dist && considered_alive(command_mind))
