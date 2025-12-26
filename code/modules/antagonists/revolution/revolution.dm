@@ -54,11 +54,12 @@
 /datum/antagonist/rev/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/M = mob_override || owner.current
 	handle_clown_mutation(M, mob_override ? null : "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself.")
-	M.apply_status_effect(/datum/status_effect/agent_pinpointer/hunt_leader)
+	determine_pointer_add(M)
 	add_team_hud(M, /datum/antagonist/rev)
 
 /datum/antagonist/rev/remove_innate_effects(mob/living/mob_override)
 	var/mob/living/M = mob_override || owner.current
+	determine_pointer_remove(M)
 	handle_clown_mutation(M, removing = FALSE)
 
 /datum/antagonist/rev/on_mindshield(mob/implanter)
@@ -771,12 +772,21 @@
 		return
 	scan_target = target
 
-/datum/antagonist/rev/proc/determine_pointer()
-	if job_rank == ROLE_REV
-	else
+/datum/antagonist/rev/proc/determine_pointer_add(mob/living/revolter)
+	if job_rank == ROLE_REV	// Regular revs know where the closer leader is.
+		revolter.apply_status_effect(/datum/status_effect/agent_pinpointer/hunt_rev_head)
+	else					// Rev heads know where command is.
+		revolter.apply_status_effect(/datum/status_effect/agent_pinpointer/hunt_command)
 
-/atom/movable/screen/alert/status_effect/agent_pinpointer/hunt_head
-	name = "Hunt Revolution Leader"
+/datum/antagonist/rev/proc/determine_pointer_remove(mob/living/revolter)
+	if job_rank == ROLE_REV	// Regular revs know where the closer leader is.
+		revolter.remove_status_effect(/datum/status_effect/agent_pinpointer/hunt_rev_head)
+	else					// Rev heads know where command is.
+		revolter.remove_status_effect(/datum/status_effect/agent_pinpointer/hunt_command)
+
+
+/atom/movable/screen/alert/status_effect/agent_pinpointer/hunt_rev_head
+	name = "Locate Revolution Leader"
 	desc = "You have an odd sense where your commander is."
 
 /datum/status_effect/agent_pinpointer/hunt_head
