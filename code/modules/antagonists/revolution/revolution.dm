@@ -77,8 +77,6 @@
 
 /datum/antagonist/rev/on_removal()
 	remove_objectives()
-	var/mob/living/M = owner.current
-	M.remove_status_effect(/datum/status_effect/agent_pinpointer/hunt_command)
 	. = ..()
 
 /datum/antagonist/rev/greet()
