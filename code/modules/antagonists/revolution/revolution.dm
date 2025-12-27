@@ -748,7 +748,7 @@
 /datum/status_effect/agent_pinpointer/hunt_command
 	id = "agent_pinpointer"
 	alert_type = /atom/movable/screen/alert/status_effect/agent_pinpointer/hunt_command
-	minimum_range = 12
+	minimum_range = 10
 	//tick_interval = HUNTER_PING_TIME
 	//duration = STATUS_EFFECT_PERMANENT
 	//range_fuzz_factor = HUNTER_FUZZ_FACTOR
@@ -791,7 +791,7 @@
 
 /datum/status_effect/agent_pinpointer/hunt_rev_head
 	id = "agent_pinpointer"
-	alert_type = /atom/movable/screen/alert/status_effect/agent_pinpointer/hunt_command
+	alert_type = /atom/movable/screen/alert/status_effect/agent_pinpointer/hunt_rev_head
 	minimum_range = 1
 	//tick_interval = HUNTER_PING_TIME
 	//duration = STATUS_EFFECT_PERMANENT
