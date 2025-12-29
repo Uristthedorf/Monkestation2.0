@@ -44,7 +44,7 @@
 				break
 	if(!rite_target)
 		return FALSE
-	rite_target.set_species(/datum/species/android)
+	rite_target.set_species(/datum/species/android/holy)
 	rite_target.visible_message(span_notice("[rite_target] has been converted by the rite of [name]!"))
 	return TRUE
 
