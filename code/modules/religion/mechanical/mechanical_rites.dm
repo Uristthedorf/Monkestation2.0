@@ -61,15 +61,48 @@
 /datum/religion_rites/machine_blessing/invoke_effect(mob/living/user, atom/movable/religious_tool)	//TODO: Rework, make it have a wider, better selection, and spawn like 5 at a time or something.
 	..()
 	var/altar_turf = get_turf(religious_tool)
-	var/blessing = pick(
-		/obj/item/organ/internal/cyberimp/arm/item_set/surgery,
+	var/list/blessing = list( //RnD attainable implants + black market.
+		/obj/item/organ/internal/cyberimp/brain/anti_drop,
+		/obj/item/organ/internal/cyberimp/brain/anti_stun,
+		/obj/item/organ/internal/cyberimp/arm/item_set/toolset,
+		/obj/item/organ/internal/cyberimp/arm/item_set/janitor,
+		/obj/item/organ/internal/cyberimp/arm/item_set/atmospherics,
+		/obj/item/organ/internal/cyberimp/arm/item_set/combat,
+		/obj/item/organ/internal/cyberimp/arm/item_set/botany,
+		/obj/item/organ/internal/cyberimp/arm/item_set/barber,
+		/obj/item/organ/internal/cyberimp/arm/item_set/synth_repair,
+		/obj/item/organ/internal/cyberimp/arm/item_set/gun/taser,
+		/obj/item/organ/internal/cyberimp/arm/item_set/mantis,
+		/obj/item/organ/internal/cyberimp/arm/item_set/mining_drill,
+		/obj/item/organ/internal/cyberimp/arm/item_set/paramedic,
+		/obj/item/organ/internal/cyberimp/arm/item_set/cook,
 		/obj/item/organ/internal/cyberimp/eyes/hud/diagnostic,
 		/obj/item/organ/internal/cyberimp/eyes/hud/medical,
-		/obj/item/organ/internal/cyberimp/mouth/breathing_tube,
 		/obj/item/organ/internal/cyberimp/chest/thrusters,
+		/obj/item/organ/internal/cyberimp/chest/reviver,
 		/obj/item/organ/internal/eyes/robotic/glow,
+		/obj/item/organ/internal/eyes/robotic/shield,
+		/obj/item/organ/internal/eyes/robotic/xray,
+		/obj/item/organ/internal/eyes/robotic/thermals,
+		
+		/obj/item/organ/internal/cyberimp/chest/sandevistan/refurbished,
+		/obj/item/organ/internal/cyberimp/chest/knockout,
+		/obj/item/organ/internal/cyberimp/chest/chemvat,
+		/obj/item/organ/internal/cyberimp/chest/dualwield/refurbished,
+		/obj/item/organ/internal/cyberimp/arm/ammo_counter,
+		/obj/item/organ/internal/cyberimp/arm/strongarm,
+		/obj/item/organ/internal/cyberimp/arm/item_set/razorwire,
+		/obj/item/organ/internal/cyberimp/leg/table_glider,
+		/obj/item/organ/internal/cyberimp/leg/shove_resist,
+		/obj/item/organ/internal/cyberimp/leg/accelerator,
+		/obj/item/organ/internal/cyberimp/leg/chemplant/drugs,
+		/obj/item/organ/internal/cyberimp/leg/chemplant/emergency
 	)
-	new blessing(altar_turf)
+	var/box = new /obj/item/storage/box(altar_turf)
+	for(var/items in 1 to 5)
+		var/item = pick(blessing)
+		new item(box)
+
 	return TRUE
 
 /datum/religion_rites/autosurgeon
