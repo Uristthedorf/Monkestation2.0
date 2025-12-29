@@ -73,12 +73,12 @@
 	return TRUE
 
 /datum/religion_rites/autosurgeon
-	name = "Receive Autosurgeon"
-	desc = "Receive a blessing from the machine god to further your ascension."	//TODO: Update description.
+	name = "Holy Autosurgeon"
+	desc = "Receive a blessed autosurgeon able to instantly perform implantation of cybernetics into an android."	//TODO: Update description.
 	ritual_length = 5 SECONDS
-	ritual_invocations =list( "Let your will power our forges.",	//TODO: Make a unique invocation.
-							"...Help us in our great conquest!")
-	invoke_msg = "The end of flesh is near!"
+	ritual_invocations =list( "The machine is perfect.",	//TODO: Make a unique invocation.
+							"...It can be changed to adapt to anything!")
+	invoke_msg = "We will survive anything!"
 	favor_cost = 250
 
 /datum/religion_rites/autosurgeon/invoke_effect(mob/living/user, atom/movable/religious_tool)

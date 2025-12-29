@@ -1,6 +1,6 @@
 /obj/item/autosurgeon/holy
 	name = "holy autosurgeon"
-	desc = "A device that automatically inserts an implant, skillchip or organ into the user without the hassle of extensive surgery. \
+	desc = "A device that automatically inserts an implant into the user without the hassle of extensive surgery. \
 		It has a slot to insert implants or organs and a screwdriver slot for removing accidentally added items. \
 		This one can only manipulate the organs of mechanical beings such as androids and IPCs."
 	organ_whitelist = list(
@@ -39,7 +39,9 @@
 	)
 
 /obj/item/autosurgeon/holy/use_autosurgeon(mob/living/target, mob/living/user, implant_time)
-	if(!(MOB_ROBOTIC in target.mob_biotypes))	//TODO: This doesn't work.
-		to_chat(user, span_alert("[target] is not a machine and cannot be implanted with this."))	//TODO: Buzz noise when it fails maybe?
+	if(!(MOB_ROBOTIC & target.mob_biotypes))
+		to_chat(user, span_alert("[target] is not a machine and cannot be implanted with this."))
+		playsound(src, 'sound/machines/buzz-two.ogg', 50, FALSE)
 		return
+	
 	..()
