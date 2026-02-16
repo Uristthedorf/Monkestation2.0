@@ -84,6 +84,8 @@
 		/obj/item/organ/internal/eyes/robotic/shield,
 		/obj/item/organ/internal/eyes/robotic/xray,
 		/obj/item/organ/internal/eyes/robotic/thermals,
+		/obj/item/organ/internal/ears/cybernetic/whisper,
+		/obj/item/organ/internal/ears/cybernetic/xray,
 		
 		/obj/item/organ/internal/cyberimp/chest/sandevistan/refurbished,
 		/obj/item/organ/internal/cyberimp/chest/knockout,
