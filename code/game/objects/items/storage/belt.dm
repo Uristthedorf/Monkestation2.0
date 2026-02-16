@@ -78,6 +78,7 @@
 		/obj/item/melee/sickly_blade/knock, //monkestation edit(maybe)
 		/obj/item/clockwork/replica_fabricator, //monkestation edit
 		/obj/item/clockwork/clockwork_slab, //monkestation edit
+		/obj/item/holotool, //monkestation edit
 	))
 
 /obj/item/storage/belt/utility/chief
@@ -696,7 +697,7 @@
 		/obj/item/grenade/syndieminibomb = 2,
 		/obj/item/multitool = 1,
 		/obj/item/screwdriver = 1,
-	),src)
+	), src)
 
 
 /obj/item/storage/belt/wands
