@@ -109,6 +109,7 @@
 
 /datum/species/android/holy
 	name = "Advanced Android"
+	id = SPECIES_ADVANCED_ANDROID
 	mutanteyes = /obj/item/organ/internal/eyes/robotic/glow
 	mutantears = /obj/item/organ/internal/ears/cybernetic/upgraded
 	bodypart_overrides = list(
