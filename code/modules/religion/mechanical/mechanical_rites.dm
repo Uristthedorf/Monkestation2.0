@@ -58,7 +58,7 @@
 	invoke_msg = "The end of flesh is near!"
 	favor_cost = 2000
 
-/datum/religion_rites/machine_blessing/invoke_effect(mob/living/user, atom/movable/religious_tool)	//TODO: Rework, make it have a wider, better selection, and spawn like 5 at a time or something.
+/datum/religion_rites/machine_blessing/invoke_effect(mob/living/user, atom/movable/religious_tool)
 	..()
 	var/altar_turf = get_turf(religious_tool)
 	var/list/blessing = list( //RnD attainable implants + black market.
@@ -109,9 +109,9 @@
 
 /datum/religion_rites/autosurgeon
 	name = "Holy Autosurgeon"
-	desc = "Receive a blessed autosurgeon able to instantly perform implantation of cybernetics into an android."	//TODO: Update description.
+	desc = "Receive a blessed autosurgeon able to instantly perform implantation of cybernetics into an android."
 	ritual_length = 5 SECONDS
-	ritual_invocations =list( "The machine is perfect.",	//TODO: Make a unique invocation.
+	ritual_invocations =list( "The machine is perfect.",
 							"...It can be changed to adapt to anything!")
 	invoke_msg = "We will survive anything!"
 	favor_cost = 250
