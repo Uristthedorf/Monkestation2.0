@@ -120,4 +120,4 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/robot/advanced/android,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/robot/advanced/android,
 	)
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN
+	changesource_flags = MIRROR_BADMIN | WABBAJACK | RACE_SWAP | ERT_SPAWN
