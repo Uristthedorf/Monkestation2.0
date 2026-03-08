@@ -61,9 +61,7 @@
 /datum/religion_rites/machine_blessing/invoke_effect(mob/living/user, atom/movable/religious_tool)
 	..()
 	var/altar_turf = get_turf(religious_tool)
-	var/list/blessing = list( //RnD attainable implants + black market.
-		/obj/item/organ/internal/cyberimp/brain/anti_drop,
-		/obj/item/organ/internal/cyberimp/brain/anti_stun,
+	var/list/blessing = list( //RnD attainable implants + black market. Minus some of the more powerful ones.
 		/obj/item/organ/internal/cyberimp/arm/item_set/toolset,
 		/obj/item/organ/internal/cyberimp/arm/item_set/janitor,
 		/obj/item/organ/internal/cyberimp/arm/item_set/atmospherics,
@@ -72,7 +70,6 @@
 		/obj/item/organ/internal/cyberimp/arm/item_set/barber,
 		/obj/item/organ/internal/cyberimp/arm/item_set/synth_repair,
 		/obj/item/organ/internal/cyberimp/arm/item_set/gun/taser,
-		/obj/item/organ/internal/cyberimp/arm/item_set/mantis,
 		/obj/item/organ/internal/cyberimp/arm/item_set/mining_drill,
 		/obj/item/organ/internal/cyberimp/arm/item_set/paramedic,
 		/obj/item/organ/internal/cyberimp/arm/item_set/cook,
@@ -82,8 +79,6 @@
 		/obj/item/organ/internal/cyberimp/chest/reviver,
 		/obj/item/organ/internal/eyes/robotic/glow,
 		/obj/item/organ/internal/eyes/robotic/shield,
-		/obj/item/organ/internal/eyes/robotic/xray,
-		/obj/item/organ/internal/eyes/robotic/thermals,
 		/obj/item/organ/internal/ears/cybernetic/whisper,
 		/obj/item/organ/internal/ears/cybernetic/xray,
 		
@@ -93,7 +88,6 @@
 		/obj/item/organ/internal/cyberimp/chest/dualwield/refurbished,
 		/obj/item/organ/internal/cyberimp/arm/ammo_counter,
 		/obj/item/organ/internal/cyberimp/arm/strongarm,
-		/obj/item/organ/internal/cyberimp/arm/item_set/razorwire,
 		/obj/item/organ/internal/cyberimp/leg/table_glider,
 		/obj/item/organ/internal/cyberimp/leg/shove_resist,
 		/obj/item/organ/internal/cyberimp/leg/accelerator,
