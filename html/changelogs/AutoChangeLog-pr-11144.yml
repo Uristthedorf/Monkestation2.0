@@ -1,0 +1,4 @@
+author: "BanementI"
+delete-after: True
+changes:
+  - rscadd: "The AI can now go to the soup store, and use a couple of other fishy words."
